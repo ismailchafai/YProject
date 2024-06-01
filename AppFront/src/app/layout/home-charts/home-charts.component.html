@@ -1,0 +1,4 @@
+<div class="container">
+  <app-charts-appartement  *ngIf="authService.roles.includes('MANAGER-APT')"></app-charts-appartement>
+  <app-charts *ngIf="authService.roles.includes('MANAGER-VOI')"></app-charts>
+</div>

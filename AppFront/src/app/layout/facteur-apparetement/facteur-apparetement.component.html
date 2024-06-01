@@ -1,0 +1,361 @@
+<div class="page-resrevation">
+  <!-- mohammed -->
+  <div class="page-resrevation-titre">
+    <i style="cursor: pointer;" class="bi bi-arrow-left-short" routerLink="/home"></i>
+    <div> Voir toutes les appartement</div>
+  </div>
+  <section class="reserver">
+
+
+    <div class="reserver-headre">
+      <ul class="nav nav-pills card-header-pills">
+        <li class="nav-item ms-3 active" (click)="handleClick('Apercu')" (click)="toggleHoverEffect($event.target)">aperçu </li>
+        <li class="nav-item" (click)="handleClick('Location')" (click)="toggleHoverEffect($event.target)">Catalogue photo:
+        </li>
+        <li class="nav-item" (click)="handleClick('Conditions')" (click)="toggleHoverEffect($event.target)">
+          Conditions</li>
+        <li>
+          <button routerLink="/videMessage/{{apparetement.propAppartemenetDto.username}}">Chate</button>
+        </li>
+      </ul>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-7 col-md-12 m-0">
+          <div class="card cardOne" id="Apercu">
+            <div class="card-body">
+              <div class="row">
+                  <div class="col-lg-9 col-md-12">
+                    <div class="content">
+                      <h2>categoreie</h2>
+                      <p>adress:{{apparetement.adresse}}</p>
+                      <div class="grid-container">
+                        <div><i class="bi bi-person-fill"></i> <span>supreficie: {{apparetement.superficie}} m<sup>2</sup></span></div>
+                        <div><i class="bi bi-slack"></i><span>Climatisation:{{apparetement.climatiseur}}</span></div>
+                        <div> <i class="bi bi-terminal-fill"><a>pour {{apparetement.nmbrPersont}} persone</a></i></div>
+                        <div *ngIf="apparetement.wifi=='oui'"> <i class="bi bi-terminal-fill"><a>avec wifi</a></i></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-md-12">
+                    <div class="photo">
+                    <img src={{returnUrl(apparetement)}} alt="" style="max-height: 140px">
+                    </div>
+                  </div>
+              </div>
+
+              <hr>
+              <div class="card-body">
+                <h1 class="content">${{apparetement.loyerMensuel}}</h1>
+                <span style="font-size: 13px;">per day</span>
+                <div style="line-height: 13px;">
+                  <p class="text-success">Free cancellation</p>
+                  <p>Pay at pick-up</p>
+                  <p>Reserve without a credit card</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card cardTree" id="Location" >
+            <div class="card-body">
+              <h2 style="display: block;">Catalogue photo:</h2>
+              <div class="content">
+
+                <div style="position: relative;margin-right: 15px;" class="mt-5" >
+                  <img style="width: 200px; height:200px; margin: 10px;" *ngFor="let url of appartemetDataImages.imagePaths" [src]=url>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card cardTree" id="Conditions">
+            <div class="card-body">
+              <h2>Conditions de location</h2>
+              <div class="content">
+                <ul class="multi-column-list">
+                  <li>
+                    Un dépôt de garantie remboursable de 250,00 € sera retenu sur votre carte au
+                    moment
+                    de la prise en charge. Cela n’est pas compris dans le prix total affiché pour la
+                    location de voiture. Ce montant est remboursable et sera automatiquement crédité
+                    sur
+                    votre compte si le véhicule n’est pas endommagé ni volé pendant la durée de
+                    location.
+                  </li>
+                  <li>
+                    Une carte de crédit valide disposant de fonds suffisants au nom du conducteur
+                    est
+                    requise pour le paiement du dépôt de garantie remboursable.
+                  </li>
+                  <li>
+                    En vertu de la réglementation européenne sur les droits des consommateurs, ce
+                    service de location de voiture n’est pas soumis au droit de rétractation. La
+                    politique d’annulation du prestataire s’appliquera.
+                  </li>
+                  <li>
+                    Ce service de location de voiture est proposé par un commerçant professionnel
+                    (c’est-à-dire une personne qui agit dans le cadre de son activité, de son
+                    entreprise
+                    ou de sa profession).
+                  </li>
+                </ul>
+                <h5>Ce qui est inclus</h5>
+                <p>Le ou les éléments suivants sont inclus dans le prix total de la location de appartement.</p>
+                <div>
+                  <i class="bi bi-check2"></i> <span style="margin-left: 2px;">Assurance collision debase</span>
+                  <ul class="multi-column-list">
+                    <li>
+                      Franchise : jusqu’à 1 500,00 € à payer en cas d’accident ou de vol</li>
+                    <li>
+                      Assurance dommages pour la carrosserie
+                    </li>
+                    <li>Assurance contre le vol</li>
+                  </ul>
+                </div>
+                <div>
+                  <i class="bi bi-check2"></i> <span style="margin-left: 2px;">Contact minimal grâce à
+                                        l’option d’enregistrement en ligne</span>
+                  <ul class="multi-column-list">
+                    <li>
+                      Alamo Rent A Car vous enverra un e-mail ou un message pour l’enregistrement
+                      en
+                      ligne dès que vous aurez réservé votre appartement
+                    </li>
+                    <li>
+                      Aucun document à remplir lors de la prise en charge
+                    </li>
+                    <li>
+                      Limitez les contacts et gagnez du temps au comptoir de la prise en charge
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-12">
+          <div class="card  cardTwo">
+            <mat-form-field class="example-full-width">
+              <mat-label>Choose a date</mat-label>
+              <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker" (dateInput)="onDateInput($event)">
+              <!--              <mat-hint>DD/MM/YYYY</mat-hint>-->
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <div  class="input-group" style="display: flex ; align-items: baseline;justify-content: space-around;">
+              <h3>Nomber des Jours</h3>
+              <div style="width: 50%">
+                <button id="decrement" (click)="decrement()" [disabled]="!display">-</button>
+                <input type="text" id="input"  [(ngModel)]="nbrJours" pattern="[0-9]*" style="width: 30%">
+                <button id="increment" (click)="increment()" [disabled]="!display">+</button>
+              </div>
+            </div>
+          </div>
+          <div class="card cardfor">
+            <div id="content" class="card-body-ez">
+
+              <div *ngIf="displaysucces">
+                <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                  <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                  </symbol>
+                  <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+                  </symbol>
+                  <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                  </symbol>
+                </svg>
+
+                <div class="alert alert-success d-flex align-items-center" role="alert">
+                  <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+                  <div>
+                    L'appartement a été réservé
+                  </div>
+                </div>
+
+              </div>
+
+
+
+
+
+
+
+              <h4 style="display: inline-block;">Price details</h4>
+              <h5>Pay at pick-up</h5>
+              <div class="grid-container4">
+                <div><span>Car rental fee x 1 day</span>
+                  <p>${{apparetement.loyerMensuel}} per day</p>
+                </div>
+                <div><span>${{apparetement.loyerMensuel}}</span></div>
+              </div>
+              <hr>
+              <div class="grid-container4 ">
+                <div> <span>Total</span></div>
+                <div><span>${{apparetement.loyerMensuel*nbrJours}}</span></div>
+                <div> <a>Pay at pick-up</a></div>
+                <div> <a>${{apparetement.loyerMensuel*nbrJours}}</a></div>
+                <div> <a>Pay now</a></div>
+                <div> <a>${{apparetement.loyerMensuel*nbrJours}}</a></div>
+              </div>
+            </div>
+            <button class="btn-rserver" (click)="handlReserve() ; ">Réserver</button>
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<p-dialog   [(visible)]="display2"  [style]="{width: '400px',height:'230px',overflow: 'hidden'}" [header]="'Notification'" [modal]="true" styleClass="p-fluid">
+
+  <div  style="overflow: hidden;">
+  <div>
+    <p style="text-align: center;font-size: larger;">Il n'est pas possible de créer une réservation pour le moment. Veuillez vous connecter pour continuer.</p>
+  </div>
+  <div class="p-dialog-footer ng-tns-c662934324-3 ng-star-inserted" style="height: 59px;">
+    <button class="btn btn-outline-danger btn-sm mx-2"  data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="anuller()">Annuler</button>
+    <button class="btn btn-outline-success btn-sm mx-2" data-bs-toggle="modal" data-bs-target="#confirmationModal" routerLink="/login">Connexion</button>
+  </div>
+  </div>
+
+</p-dialog >
+ <!-- <div class="row">
+        <div class="col-7 m-0">
+            <div class="card cardTree">
+                <div class="card-body">
+                    <h3 style="display: block;">Location de voiture</h3>
+                    <div class="content">
+                      <p>Prise en charge et restitution</p>
+                      <div class="row">
+                        <div class="col-6">
+                          <div>
+                              <i class="bi bi-calendar2"></i> <span>mer. 15 mai – 10 h 30 - jeu. 16 mai – 10 h 30</span>
+                            </div>
+
+                          <div>
+                            <i class="bi bi-slack"></i><span>Aéroport CDG</span>
+                            <p>Paris Ch De Gaulle Apt T1 T2 Roissy Apt Bp 332 Cedex Cdg, Roissy, France 95716</p>
+                          </div>
+                        </div>
+                        <div class="col-6">
+                          <div>
+                            <i class="bi bi-clock"></i><span>  Heures d’ouverture</span>
+                         <p>
+                          mer. 07 h 00 – 23 h 59
+                          jeu. 07 h 00 – 23 h 59
+                         </p>
+                       </div>
+
+                           <div>
+                            <i class="bi bi-terminal-fill"></i> <span>Comptoir de l’agence et voiture dans le terminal</span>
+                           </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="col-3">
+            <div class="card cardTwo" >
+                <div class="card-body">
+                </div>
+            </div>
+        </div>
+
+    </div> -->
+
+
+<!--<p-dialog   [(visible)]="display3"  [header]="'Notification'" [modal]="true" styleClass="p-fluid">-->
+
+
+<!--&lt;!&ndash;  <div id="username-page">&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="username-page-container">&ndash;&gt;-->
+<!--&lt;!&ndash;      <h1 class="title">Type your username to enter the Chatroom</h1>&ndash;&gt;-->
+<!--&lt;!&ndash;      <form id="usernameForm" name="usernameForm">&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;          <input type="text" id="name" placeholder="Username" autocomplete="off" class="form-control" />&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;          <button type="submit" class="accent username-submit">Start Chatting</button>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;      </form>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;  </div>&ndash;&gt;-->
+
+
+<!--  <div id="chat-page" >-->
+<!--    <div class="chat-container">-->
+<!--      <div class="chat-header">-->
+<!--        <h2>Spring WebSocket Chat  By Mohammed Ezzaim</h2>-->
+<!--      </div>-->
+<!--      <div class="connecting">-->
+<!--        Connecting...-->
+<!--      </div>-->
+<!--      <ul id="messageArea">-->
+
+<!--      </ul>-->
+
+<!--      <form id="messageForm" name="messageForm">-->
+<!--        <div class="form-group">-->
+<!--          <div class="input-group clearfix">-->
+<!--            <input type="text" id="message" placeholder="Type a message..." autocomplete="off" class="form-control"/>-->
+<!--            <button type="submit" class="primary">Send</button>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </form>-->
+
+<!--    </div>-->
+<!--  </div>-->
+<!--</p-dialog >-->
+
+
+
+
+
+          <!--          <div class="card cardTree" id="Location">-->
+          <!--            <div class="card-body">-->
+          <!--              <h2 style="display: block;">Location d'appartement</h2>-->
+          <!--              <div class="content">-->
+          <!--                <p>Prise en charge et restitution</p>-->
+          <!--                <div class="row">-->
+          <!--                  <div class="col-6">-->
+          <!--                    <div>-->
+          <!--                      <i class="bi bi-calendar2"></i> <span>mer. 15 mai – 10 h 30 - jeu. 16 mai –10 h30</span>-->
+          <!--                    </div>-->
+
+          <!--                    <div>-->
+          <!--                      <i class="bi bi-slack"></i><span>Aéroport CDG</span>-->
+          <!--                      <p>Paris Ch De Gaulle Apt T1 T2 Roissy Apt Bp 332 Cedex Cdg, Roissy, France 95716</p>-->
+          <!--                    </div>-->
+          <!--                  </div>-->
+          <!--                  <div class="col-6">-->
+          <!--                    <div>-->
+          <!--                      <i class="bi bi-clock"></i><span> Heures d’ouverture</span>-->
+          <!--                      <p>-->
+          <!--                        mer. 07 h 00 – 23 h 59-->
+          <!--                        jeu. 07 h 00 – 23 h 59-->
+          <!--                      </p>-->
+          <!--                    </div>-->
+
+          <!--                    <div>-->
+          <!--                      <i class="bi bi-terminal-fill"></i> <span>Comptoir de propre d'appartement dans le terminal</span>-->
+          <!--                    </div>-->
+          <!--                  </div>-->
+          <!--                </div>-->
+          <!--              </div>-->
+          <!--            </div>-->
+          <!--          </div>-->

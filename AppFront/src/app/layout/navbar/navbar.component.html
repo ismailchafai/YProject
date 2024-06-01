@@ -1,0 +1,210 @@
+<mat-toolbar color="primary">
+  <mat-card>
+    <img mat-card-image class="mat-card" src="assets/Safarent.jpg" id="logo" alt="Logo">
+  </mat-card>
+  <!--  button menu-->
+  <button *ngIf="authService.isAuthService && authService.roles!='USER'" mat-icon-button (click)="mydrawer.toggle()">
+    <mat-icon>{{ 'menu'|translate }}</mat-icon>
+  </button>
+
+  <span style="flex:auto"></span>
+  <button  mat-button routerLink="/home">{{ 'Home'|translate }}</button>
+  <button mat-button [matMenuTriggerFor]="importMenu1" >
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-globe" viewBox="0 0 16 16">
+      <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m7.5-6.923c-.67.204-1.335.82-1.887 1.855A8 8 0 0 0 5.145 4H7.5zM4.09 4a9.3 9.3 0 0 1 .64-1.539 7 7 0 0 1 .597-.933A7.03 7.03 0 0 0 2.255 4zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a7 7 0 0 0-.656 2.5zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5zM8.5 5v2.5h2.99a12.5 12.5 0 0 0-.337-2.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5zM5.145 12q.208.58.468 1.068c.552 1.035 1.218 1.65 1.887 1.855V12zm.182 2.472a7 7 0 0 1-.597-.933A9.3 9.3 0 0 1 4.09 12H2.255a7 7 0 0 0 3.072 2.472M3.82 11a13.7 13.7 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5zm6.853 3.472A7 7 0 0 0 13.745 12H11.91a9.3 9.3 0 0 1-.64 1.539 7 7 0 0 1-.597.933M8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855q.26-.487.468-1.068zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.7 13.7 0 0 1-.312 2.5m2.802-3.5a7 7 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7 7 0 0 0-3.072-2.472c.218.284.418.598.597.933M10.855 4a8 8 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4z"/>
+    </svg> {{selectedLanguage}}
+  </button>
+
+
+  <mat-menu #importMenu1>
+    <button mat-menu-item (click)="SwitchLanguage('en')">English</button>
+    <button mat-menu-item (click)="SwitchLanguage('fr')">Français</button>
+    <button mat-menu-item (click)="SwitchLanguage('ar')">العربية</button>
+
+  </mat-menu>
+
+  <button mat-button routerLink="/login" *ngIf="!authService.isAuthService" >{{ 'Sign in'|translate }}</button>
+
+
+
+
+  <button mat-button *ngIf="authService.isAuthService" class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+    <a  class="nav-link" tabindex="-1" (click)="appelCompoenetNotification()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
+        <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901"/>
+      </svg>
+      <span class="badge bg-danger">{{nbrNotification}}</span>
+    </a>
+  </button>
+
+  <app-notification-info *ngIf="isAffaiche"></app-notification-info>
+
+  <button mat-button>
+    <a (click)="onMessageClick()" class="nav-link " href="#" tabindex="-1"  routerLink="/message" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-left-text-fill" viewBox="0 0 16 16">
+      <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4.414a1 1 0 0 0-.707.293L.854 15.146A.5.5 0 0 1 0 14.793zm3.5 1a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1zm0 2.5a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1zm0 2.5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1z"/>
+    </svg></a>
+  </button>
+
+
+  <button mat-button *ngIf="authService.isAuthService  && authService.roles.includes('ADMIN')" (click)="handleLogout()" >
+    <a (click)="onMessageClick()" class="nav-link " href="#" tabindex="-1"   >
+      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"/>
+        <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
+      </svg>
+    </a>
+  </button>
+
+  <div *ngIf="authService.isAuthService && !authService.roles.includes('ADMIN') && !logo "  (click)="toggleMenu()">
+                  <span class="image" >
+                    <p class="" style="margin: auto;font-size:35px;margin:auto;color: #f3ececf0;">{{ lettere }}</p>
+                  </span>
+  </div>
+  <!--  <img *ngIf="authService.isAuthService && !authService.roles.includes('ADMIN') && !logo " src="./assets/images/user.png" class="user-pic"  (click)="toggleMenu()">-->
+  <img  *ngIf="authService.isAuthService && !authService.roles.includes('ADMIN') && logo" class="user-pic"  [src]="logo"  (click)="toggleMenu()">
+</mat-toolbar>
+
+
+<mat-drawer-container (click)="toggleMenuColose()"  >
+  <mat-drawer  #mydrawer  opened="false" mode="side" position="start" >
+    <mat-list *ngIf="authService.roles!='USER' || authService.isAuthService" >
+      <mat-list-item *ngIf="authService.isAuthService && authService.roles.includes('MANAGER-APT')">
+        <button mat-button routerLink="/propreAppartement/appartemet" >
+          <mat-icon>{{ 'Appartement'|translate }} </mat-icon>
+          {{ 'create Appartement'|translate }}
+        </button>
+
+      </mat-list-item>
+      <mat-list-item *ngIf="authService.isAuthService && authService.roles.includes('MANAGER-APT')">
+        <button mat-button routerLink="/propreAppartement/categoriesapp" >
+          <mat-icon>{{ 'CategorieAppartement'|translate }} </mat-icon>
+          {{ 'create CategorieAppartement'|translate }}
+        </button>
+      </mat-list-item>
+      <mat-list-item *ngIf="authService.isAuthService && authService.roles.includes('ADMIN')">
+        <button mat-button routerLink="/admin/propraitaire" >
+          <mat-icon>{{ 'PropAppartement'|translate }} </mat-icon>
+          {{ 'create PropAppartement'|translate }}
+        </button>
+      </mat-list-item>
+
+      <mat-list-item *ngIf="authService.isAuthService && authService.roles.includes('ADMIN')">
+        <button mat-button routerLink="/admin/createAgence" *ngIf="authService.isAuthService">
+          <mat-icon>Agence Location</mat-icon>
+          {{ 'Create Agence de Location'|translate   }}
+        </button>
+
+      </mat-list-item>
+      <mat-list-item>
+        <button mat-button (click)="nameUrlROle('createContrat')"   *ngIf="authService.isAuthService">
+          <mat-icon>create </mat-icon>
+          {{ 'Create Contrat'|translate }}
+        </button>
+
+      </mat-list-item>
+      <mat-list-item>
+        <button mat-button (click)="nameUrlROle('createLocation')" *ngIf="authService.isAuthService">
+          <mat-icon>Location</mat-icon>
+          {{' Create Location'|translate }}
+        </button>
+
+      </mat-list-item>
+
+      <mat-list-item>
+        <button mat-button (click)="nameUrlROle('createClient')" *ngIf="authService.isAuthService">
+          <mat-icon>{{ 'Client'|translate }}</mat-icon>
+          {{ 'Create Client '|translate}}
+        </button>
+
+      </mat-list-item>
+
+      <mat-list-item>
+        <button mat-button (click)="nameUrlROle('createFacteur')" *ngIf="authService.isAuthService">
+          <mat-icon>{{ 'Facture'|translate }}</mat-icon>
+          {{ 'Create Facture'|translate }}
+        </button>
+      </mat-list-item>
+      <mat-list-item>
+        <button mat-button (click)="nameUrlROle('createPaiement')"  *ngIf="authService.isAuthService">
+          <mat-icon>Paiement</mat-icon>
+          {{ 'Create Paiement'|translate }}
+        </button>
+      </mat-list-item>
+
+      <mat-list-item *ngIf="authService.isAuthService && authService.roles.includes('MANAGER-VOI')">
+        <button mat-button routerLink="/agenceLocation/createVoiture" >
+          <mat-icon>{{ 'Voiture'|translate }}</mat-icon>
+          {{ 'Create Voiture'|translate }}
+        </button>
+      </mat-list-item>
+      <mat-list-item *ngIf="authService.isAuthService && authService.roles.includes('MANAGER-VOI')">
+        <button mat-button routerLink="/agenceLocation/createCategorieVoiture" >
+          <mat-icon>Categorie_Voiture</mat-icon>
+          {{ 'Create CategorieVoiture'|translate }}
+        </button>
+      </mat-list-item>
+      <mat-list-item *ngIf="authService.isAuthService && authService.roles.includes('MANAGER-VOI')">
+        <button mat-button routerLink="/notificationBean" >
+          <mat-icon>notifiaction</mat-icon>
+          {{ 'Create notifiaction'|translate }}
+        </button>
+      </mat-list-item>
+      <mat-list-item>
+        <button mat-button (click)="nameUrlROle('createReservation')" *ngIf="authService.isAuthService">
+          <mat-icon>Reservation</mat-icon>
+          {{ 'Create Reservation'|translate }}
+        </button>
+      </mat-list-item>
+    </mat-list>
+  </mat-drawer>
+
+
+
+  <mat-drawer-content>
+    <div style="min-height: 600px">
+      <router-outlet></router-outlet>
+      <div  style="min-height: auto">
+        <div class="sub-menu-wrap" id="supMenu" style="position: absolute; top: 0; z-index: 1;" *ngIf="isMenuToggle ">
+          <div  class="sub-menu bg-light">
+            <div class="user-info">
+
+              <div class="user-info">
+                <div *ngIf="authService.isAuthService && !authService.roles.includes('ADMIN') && !logo "  >
+                  <span class="image" >
+                    <p class="" style="margin: auto;font-size:35px;margin:auto;color: #f3ececf0;">{{ lettere }}</p>
+                  </span>
+                </div>
+                <img *ngIf="logo" [src]="logo">
+                <h2 style="font: 500 20px / 32px Roboto, sans-serif;letter-spacing: .0125em;margin: 4px 9px 2px;">{{this.authService.username}}</h2>
+              </div>
+            </div>
+            <hr>
+
+            <a class="sub-menu-link" routerLink="/profile">
+              <img src="./assets/images/profile.png" alt="">
+              <p>{{ 'Profile'|translate }}</p>
+            </a>
+
+            <a  class="sub-menu-link">
+              <img src="./assets/images/setting.png" alt="">
+              <p>{{ 'Settings & Privacy'|translate }} </p>
+            </a>
+
+            <a  class="sub-menu-link">
+              <img src="./assets/images/help.png" alt="">
+              <p>{{ 'Help & Support'|translate }}</p>
+            </a>
+
+            <a  class="sub-menu-link" (click)="handleLogout()">
+              <img src="./assets/images/logout.png" alt="">
+              <p>{{ 'Logout'|translate }}</p>
+            </a>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </mat-drawer-content>
+
+</mat-drawer-container>

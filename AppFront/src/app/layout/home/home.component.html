@@ -1,0 +1,256 @@
+<div class="card_t text-center">
+  <div class="card-header">
+    <ul class="nav nav-pills card-header-pills " style="display: flex;justify-content: center;position: relative;top: 2rem;" >
+      <li class="nav-item">
+<!--        <a class="nav-link text-dark" (click)="clicVoiture()">{{ 'Voiture'|translate }}</a>-->
+<!--      </li>-->
+<!--      <li class="nav-item">-->
+<!--        <a class="nav-link text-dark" (click)="clicApp()">{{ 'Appartement'|translate }}</a>-->
+        <a class=" nav-link text-dark" (click)="clicVoiture()" (click)="handleClick('Voiture')" (click)="toggleHoverEffect($event.target)" ><div style="position: absolute;left: -12px; top: 4px;"><mat-icon> directions_car</mat-icon></div>{{ 'Voiture'|translate }}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-dark" (click)="clicApp()" (click)="handleClick('Appartement')" (click)="toggleHoverEffect($event.target)"><div style="position: absolute;left: -12px; top: 4px;"><mat-icon>home</mat-icon></div>{{ 'Appartement'|translate }}</a>
+      </li>
+
+    </ul>
+
+
+  </div>
+  <div class="card-body">
+
+    <div *ngIf="obejetClicked ===true">
+      <div class="row mt-5" >
+
+        <div class="col-4">
+          <select name="category" class=" form-control form-select" [(ngModel)]="categorievoitSelected" (change)="handelSearch(); handelSearcheByCategorie()">
+            <option value="" disabled selected> {{ 'Categorie'|translate }}</option>
+            <option value="all">{{ 'All'|translate }}</option>
+            <option [value]="option.libelle" *ngFor="let option of categoriesVoiture">{{option.libelle}}</option>
+          </select>
+        </div>
+        <div class="col-4">
+          <select name="location" class="  form-control form-select" [(ngModel)]="modeleSelcted"  (change)="handelSearch(); handelSearcheByCategorie()">
+            <option value="" disabled selected>Modele</option>
+            <option value="all">{{ 'All'|translate }}</option>
+            <option *ngFor="let modele of modeles" value="{{modele}}">{{modele}}</option>
+
+          </select>
+        </div>
+        <div class="col-4">
+          <select name="location" class="  form-control form-select" [(ngModel)]="villSelected"  (change)="handelSearch(); getville()">
+            <option value="" disabled selected>Ville</option>
+            <option *ngFor="let ville of villes" value="{{ville}}">{{ville}}</option>
+
+          </select>
+        </div>
+
+          <!--<div class="col-4">
+            <select name="category" class="form-control form-select" [(ngModel)]="villSelected" (change)="voitureByville();handelSearch()">
+              <option value="" disabled selected>Ville</option>
+              <option [value]="ville" *ngFor="let ville of villes">{{ville}}</option>
+            </select>
+          </div>-->
+
+
+
+
+        <div *ngIf="selected==false" class=" btn_format">
+          <a class="btn btn-outline-primary rounded-0" [class.active]="formatcard" (click)="handelHorizental()" > <i class="bi bi-list"></i> </a>
+          <a class="btn btn-outline-primary rounded-0"[class.active]="!formatcard" (click)="handelVertical()"> <i class="bi bi-columns-gap"></i> </a>
+        </div>
+
+        <div *ngIf="selected==false" >
+          <button (click)="handelPrev()" class="prev btn btn-outline-primary"><i class="bi bi-arrow-left-square"></i></button>
+        </div>
+
+
+      </div>
+
+
+      <div *ngIf="formatcard && !selected" class="container" style=" margin-top: 50px;">
+        <div *ngFor="let item of dataVoiture" class="card-horizontal">
+          <div class="card-image">
+            <img  [src]="returnUrl(item)" class="img_horizental"/>
+          </div>
+          <div class="card-details">
+            <a class="card-action" href="#"><i class="fa fa-heart"></i></a>
+            <div class="card-heading">
+              {{item.nomModele}}
+            </div>
+            <div class="card-text">
+              Audi Q8 is a full-size luxury crossover SUV coupé made by Audi that was launched in 2018.
+            </div>
+            <div class="card-text">
+              $67,400
+            </div>
+            <a href="#" class="card-button">Reserver</a>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="!formatcard && !selected" class="container" style="margin-top:50px;">
+        <div class="row">
+          <div *ngFor="let item of dataVoiture" class="col-lg-4 col-md-6 col-sm-12" style="margin-top: 15px;">
+            <div class="card-sl">
+              <div class="card-image" style="height: 220px;">
+                <img style="height: 100%; width: 100%;" [src]="returnUrl(item)" />
+
+              </div>
+              <a class="card-action" href="#"><i class="fa fa-heart"></i></a>
+              <div class="card-heading">
+                {{item.nomModele}}
+              </div>
+              <div class="card-text">
+                {{ item.nomModele }} is a {{item.categorie.libelle}} with Color {{item.couleur}} & Puissance of {{item.puissance}} Hourses.
+              </div>
+              <div class="card-text">
+                {{item.prix}}
+              </div>
+
+              <!--              <button class="btn btn-outline-primary" (click)="returnUrl(apparetement)">getImage</button>-->
+
+              <button href="#" class="card-button" routerLink="/reservationInformation/{{item.matricule}}"> {{ 'Réserver'|translate }} </button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+      <!--<div *ngIf="!formatcard && !selected" class="container" style="margin-top:50px;">
+        <div class="row">
+          <div *ngFor="let item of dataVoiture" class="col-md-4">
+            <div class="card-sl">
+              <div class="card-image">
+                <img width="200px" height="200px"  [src]="returnUrl(item)" class="img_horizental"/>
+>>>>>>> 8edb7721ffc4cb4ec2cfe5132ae22defc6a28b88
+              </div>
+
+              <a class="card-action" href="#"><i class="fa fa-heart"></i></a>
+              <div class="card-heading">
+                {{item.nomModele}}
+              </div>
+              <div class="card-text">
+                {{ item.nomModele }} is a {{item.categorie.libelle}} with Color {{item.couleur}} & Puissance of {{item.puissance}} Hourses.
+              </div>
+              <div class="card-text">
+                {{item.prix}}
+              </div>
+              <a href="#" class="card-button" routerLink="/reservationInformation/{{item.matricule}}"> Reserve Now</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>-->
+
+    <div *ngIf="!obejetClicked" class="container " style="margin-left: 8rem;">
+
+
+      <div class="row mt-5" >
+        <div class="col-4">
+<!--          <label for="browser" class="form-label">Choose Categorie:</label>-->
+          <select name="category" class="form-control form-select"  [(ngModel)]="selecCategorieApt" (change)="onCategorieChange();handelSearch()">
+            <option value="1" disabled selected>Choose {{ 'Categorie'|translate }}:</option>
+            <option value="">{{ 'All'|translate }}</option>
+            <option [value]="cate.libelle" *ngFor="let cate of dataCategorieApartement">{{cate.libelle}}</option>
+          </select>
+
+        </div>
+        <div class="col-4">
+          <select name="category" class="form-control form-select" [(ngModel)]="villSelected" (change)="apparetementByMontant()">
+            <option value="" selected> Ville</option>
+            <option [value]="cate" *ngFor="let cate of villes">{{cate}}</option>
+          </select>
+        </div>
+<!--        <div class="col-4">-->
+<!--          <form>-->
+<!--&lt;!&ndash;            <label for="browser" class="form-label">Choose Ville:</label>&ndash;&gt;-->
+<!--            <input class="form-control " list="browsers" name="browser" id="browser"  placeholder="Choose Ville..."  [(ngModel)]="villSelected" (change)="apparetementByMontant();handelSearch()">-->
+<!--            <datalist id="browsers">-->
+<!--              <option [value]="cate" *ngFor="let cate of villes">{{cate}}</option>-->
+<!--            </datalist>-->
+<!--          </form>-->
+<!--        </div>-->
+        <div *ngIf="!selected" class="btn_format">
+          <a class="btn btn-outline-primary rounded-0" [class.active]="formatcard" (click)="handelHorizental()" > <i class="bi bi-list"></i> </a>
+          <a class="btn btn-outline-primary rounded-0"[class.active]="!formatcard" (click)="handelVertical()"> <i class="bi bi-columns-gap"></i> </a>
+        </div>
+
+        <div *ngIf="!selected" >
+          <button (click)="handelPrev()" class="prev btn btn-outline-primary"><i class="bi bi-arrow-left-square"></i></button>
+        </div>
+
+      </div>
+      <div *ngIf="formatcard && !selected" class="container" style=" margin-top: 50px;">
+        <div class="card-horizontal" *ngFor="let apparetement of dataApartement">
+
+          <div class="card-image">
+            <img [src]="returnUrl(apparetement)" class="img_horizental" alt=""/>
+          </div>
+          <div class="card-details">
+            <a class="card-action" href="#"><i class="fa fa-heart"></i></a>
+            <div class="card-heading">
+              {{apparetement.code}}
+            </div>
+            <div class="card-text">
+              {{apparetement.adresse}}
+            </div>
+
+            <div class="card-text">
+              ${{apparetement.loyerMensuel}}
+            </div>
+            <a href="#" class="card-button" routerLink="/facteurApparetement/{{apparetement.code}}">{{ 'Réserver'|translate }} </a>
+          </div>
+        </div>
+
+      </div>
+
+
+      <div *ngIf="!formatcard && !selected" class="container" style="margin-top:50px;">
+<!--        <div class="col-4">-->
+<!--          <select name="category" class="form-control form-select" [(ngModel)]="villSelected" (change)="apparetementByMontant()">-->
+<!--            <option value="" selected> Ville</option>-->
+<!--            <option [value]="cate" *ngFor="let cate of villes">{{cate}}</option>-->
+<!--          </select>-->
+<!--        </div>-->
+<div class="row">
+  <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let appartement of dataApartement">
+    <div class="card-sl">
+      <div class="card-image" style="height: 220px;">
+        <img style="height: 100%; width: 100%;" [src]="returnUrl(appartement)" alt=""/>
+      </div>
+      <a class="card-action" href="#"><i class="fa fa-heart"></i></a>
+      <div class="card-heading">
+        {{appartement.code}}
+      </div>
+      <div class="card-text">
+        {{appartement.adresse}}
+      </div>
+      <div class="card-text">
+        ${{appartement.loyerMensuel}}
+      </div>
+      <button class="card-button" routerLink="/facteurApparetement/{{appartement.code}}">Réserver</button>
+    </div>
+  </div>
+</div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div *ngIf="selected==true" class="container mt-5">
+
+  <app-carousel-test></app-carousel-test>
+
+  <!-- <div class="carousel"> -->
+    <app-carousel-with-filter-app></app-carousel-with-filter-app>
+    <app-carousel-with-animation></app-carousel-with-animation>
+    <app-carousel-with-filter-voit></app-carousel-with-filter-voit>
+  <!-- </div> -->
+
+</div>

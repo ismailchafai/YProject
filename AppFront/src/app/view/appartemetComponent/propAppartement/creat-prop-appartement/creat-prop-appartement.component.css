@@ -1,0 +1,41 @@
+button{
+  width: 100px;
+  height: 40px;
+}
+
+.notification {
+  position: fixed;
+  top: -100px; /* Position initiale au-dessus de l'écran */
+  right: 100px;
+  background-color: #22daea;
+  color: white;
+  width: 350px;
+  text-align: center;
+  padding: 15px;
+  border-radius: 5px;
+  z-index: 1000;
+  transition: top 0.5s ease; /* Ajout d'une transition pour une animation fluide */
+  border-bottom: 4px solid yellow; /* Ajout d'une bordure en bas */
+}
+
+.notification.show {
+  top: 50px; /* Position lorsque la notification est affichée */
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0); /* Aucun déplacement au début de l'animation */
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(100%); /* Fait descendre la notification jusqu'en bas */
+  }
+}
+
+table{
+  width: 100%;
+}
+card-body{
+  width: 100%;
+}

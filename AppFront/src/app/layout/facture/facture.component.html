@@ -1,0 +1,152 @@
+ <div id="content">
+  <div class="container">
+
+    <div class="  facture">
+      <h2 *ngIf="dataLocation.reservationDto.appartement !=null" class="facture-title">Facture de réservation d'appartement</h2>
+      <h2 *ngIf="dataLocation.reservationDto.voiture !=null" class="facture-title">Facture de réservation de voiture</h2>
+
+<!--      <div class="row">-->
+<!--        <div class="col-6 info-client">-->
+<!--          <p class="facture-label">Client :</p>-->
+<!--          <p>Nom : John Doe</p>-->
+<!--          <p>Adresse : 123 Rue des Roses</p>-->
+<!--          <p>Téléphone : +1234567890</p>-->
+<!--          <p>E-mail : john.com</p>-->
+<!--        </div>-->
+<!--        <div class="col-6 info-agence">-->
+<!--          <p class="facture-label">agence :</p>-->
+<!--          <p>Nom : alloBaba</p>-->
+<!--          <p>iceAgence : 123 Rue des Roses</p>-->
+<!--          <p>raisonSocialAg : agence de location des voitures</p>-->
+<!--          <p>numTelephone : 1234567890</p>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="info-vehicule">-->
+<!--      <p class="facture-label">Voiture réservée :</p>-->
+<!--      <p>Modèle : Toyota Camry</p>-->
+<!--      <p>Plaque d'immatriculation : ABC123</p>-->
+<!--      <p>Période de location : 10/05/2024 - 15/05/2024</p>-->
+<!--      <p>Montant total : $300</p>-->
+<!--    </div>-->
+<!--    <div class="total-section">-->
+<!--      <h4>Total à payer :</h4>-->
+<!--      <p>Montant total : $300</p>-->
+<!--    </div>-->
+<!--&lt;!&ndash;  </div>&ndash;&gt;-->
+
+<!--Facture de réservation d'appartement-->
+<!--  <div class="facture">-->
+<!--    <h2 class="facture-title">Facture de réservation d'appartement</h2>-->
+<!--    <div class="info-client">-->
+<!--      <p class="facture-label">Client :</p>-->
+<!--      <p>Nom : Jane Smith</p>-->
+<!--      <p>Adresse : 456 Avenue des Lilas</p>-->
+<!--      <p>Téléphone : +987654321</p>-->
+<!--      <p>E-mail : abdelilah.erraguibi</p>-->
+<!--    </div>-->
+<!--    <div class="info-vehicule">-->
+<!--      <p class="facture-label">Appartement réservé :</p>-->
+<!--      <p>Adresse : 789 Rue des Tulipes</p>-->
+<!--      <p>Type d'appartement : Studio</p>-->
+<!--      <p>Période de location : 20/05/2024 - 25/05/2024</p>-->
+<!--      <p>Montant total : $500</p>-->
+<!--    </div>-->
+<!--    <div class="total-section">-->
+<!--      <h4>Total à payer :</h4>-->
+<!--      <p>Montant total : $500</p>-->
+<!--    </div>-->
+<!--  </div>&ndash;&gt;-->
+<div id="content2">
+<div class="container">
+  <div class="invoice-container">
+      <h1 class="facture-title"> <i class="bi bi-receipt-cutoff"></i> FACTURE</h1>
+    <div *ngIf="dataLocation.reservationDto.appartement !=null" class="  client-details">
+      <p><strong>Agence :</strong></p>
+      <p>{{dataLocation.reservationDto.appartement.propAppartemenetDto.email}}</p>
+      <p>N° Siren ou Siret : {{dataLocation.reservationDto.appartement.propAppartemenetDto.iceAgApp}}</p>
+      <p>N° TVA intra. : {{dataLocation.reservationDto.appartement.propAppartemenetDto.ribAgenceApp}}</p>
+    </div>
+    <div *ngIf="dataLocation.reservationDto.voiture !=null" class="  client-details"><p><strong>Agence :</strong></p>
+      <p>{{dataLocation.reservationDto.voiture.agenceLocation.numTelephone}}</p>
+      <p>N° Siren ou Siret : {{dataLocation.reservationDto.voiture.agenceLocation.iceAgLoc}}</p>
+      <p>N° TVA intra. : {{dataLocation.reservationDto.voiture.agenceLocation.ribAgenceLoc}}</p>
+    </div>
+
+<!--      <div class="  client-details">-->
+<!--        <p><strong>Agence :</strong></p>-->
+<!--        <p>{{dataLocation.reservationDto.}}</p>-->
+<!--        <p>N° Siren ou Siret : 1234567-8</p>-->
+<!--        <p>N° TVA intra. : FRXX 999999999</p>-->
+<!--      </div>-->
+
+  <!--  <div class="  client-details">
+      <p><strong>Propriétaire d'appartement:</strong></p>
+      <p>13000 Marseille</p>
+      <p>N° Siren ou Siret : 1234567-8</p>
+      <p>N° TVA intra. : FRXX 999999999</p>
+    </div> -->
+
+
+
+    <div class="  invoice-facture">
+      <p><strong>facture :</strong></p>
+        <p><strong>Date :</strong> </p>
+        <p><strong>ref de facture :</strong> 143</p>
+      </div>
+
+    <div class="client-details" >
+      <p><strong>Client :</strong></p>
+      <p>{{dataLocation.reservationDto.client.prenom}} {{dataLocation.reservationDto.client.nom}}</p>
+      <p>CIN: {{dataLocation.reservationDto.client.cin}}</p>
+      <p>Email: {{dataLocation.reservationDto.client.email_Client}}</p>
+      <p>Tell: {{dataLocation.reservationDto.client.numTeleClient}}</p>
+    </div>
+
+    <div *ngIf="dataLocation.reservationDto.voiture !=null" class="Voiture-details" >
+      <p><strong>Voiture réservée :</strong></p>
+      <p>Modèle : {{dataLocation.reservationDto.voiture.nomModele}}</p>
+      <p>categorie : {{dataLocation.reservationDto.voiture.categorie}}</p>
+      <p>Matricule : {{dataLocation.reservationDto.voiture.matricule}}</p>
+      <p>Période de location : {{dataLocation.dateDebut}}-{{dataLocation.datefine}}</p>
+    </div>
+
+    <div *ngIf="dataLocation.reservationDto.appartement !=null" class="Voiture-details" >
+      <p><strong>Voiture Appartement :</strong></p>
+      <p>categorie : {{dataLocation.reservationDto.appartement.categoriesAppartementDto.libelle}}</p>
+      <p>Ville : {{dataLocation.reservationDto.appartement.ville}}</p>
+      <p>Adresse : {{dataLocation.reservationDto.appartement.adresse}}</p>
+      <p>Superficie : {{dataLocation.reservationDto.appartement.superficie}}</p>
+      <p>Période de location : {{dataLocation.dateDebut}}-{{dataLocation.datefine}}</p>
+    </div>
+    <!--<div class="Appartement-details">
+      <p class="facture-label">Appartement réservé :</p>
+      <p>Adresse : 789 Rue des Tulipes</p>
+      <p>Categorie d'appartement : Studio</p>
+      <p>Période de location : 20/05/2024 - 25/05/2024</p>
+    </div>-->
+
+
+     <div>
+       <h2>Total à Payer : </h2>
+   <h2 class="total"> <strong> <i class="bi bi-credit-card-fill"></i> 1000$</strong></h2>
+     </div>
+  </div>
+</div>
+</div>
+
+
+  <div class="  page-resrevation-titre" id="right">
+    <strong> <a  routerLink="/contrat">
+       passer à payer <i  class="  bi bi-arrow-right-short"></i>
+    </a></strong>
+  </div>
+ <div id="left">
+ <strong>
+   <a (click)="exportToPDF()" class="btn btn-outline-info">
+     Exporter<i  class=" mx-2  pi pi-file-export"></i>
+   </a>
+ </strong>
+
+  </div>
+

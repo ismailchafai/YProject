@@ -1,0 +1,283 @@
+<div *ngIf="authService.isPropraitaire" class="container ">
+  <header>
+    <div class="photo">
+      <img class="" src="./assets/images/profileEz.png" alt="">
+    </div>
+
+    <div class="photo-text">
+      <h1 class="photo-text-h1">{{authService.dataUtilisateur.nom}}  {{authService.dataUtilisateur.prenom}}</h1>
+      <button class="photo-text-btn">Edit profile</button>
+    </div>
+  </header>
+  <section>
+    <div class="sec1">
+      <div class="sec1-header">
+        <h1>{{authService.dataUtilisateur.username}}</h1>
+      </div>
+
+      <div class="sec1-body">
+        <div class="sec1-body-title">
+          <h1>Informations de basee</h1>
+          <a href="">Modifier</a>
+        </div><br>
+
+        <p>Assurez-vous que ces informations correspondent à votre pièce d’identité pour le voyage, par exemple votre passeport.</p>
+
+        <div class="sec1-body-infos">
+          <div class="sec1-body-info">
+            <h4>Nom</h4>
+            <p>{{authService.dataUtilisateur.nom}}</p>
+          </div>
+
+          <div class="sec1-body-info">
+            <h4>Prenom</h4>
+            <p>{{authService.dataUtilisateur.prenom}}</p>
+          </div>
+        </div>
+
+
+<!--        <div class="sec1-body-infos">-->
+<!--          <div class="sec1-body-info">-->
+<!--            <h4>Date de naissance</h4>-->
+<!--            <p>2003-06-18</p>-->
+<!--          </div>-->
+
+
+<!--          <div class="sec1-body-info">-->
+<!--            <h4>Sexe</h4>-->
+<!--            <p>Homme</p>-->
+<!--          </div>-->
+<!--        </div>-->
+        <div class="sec1-body-infos">
+          <div class="sec1-body-info">
+            <h4>rip</h4>
+            <p>{{authService.dataUtilisateur.ribPropAppt}}</p>
+          </div>
+
+
+          <div class="sec1-body-info">
+            <h4>num compte</h4>
+            <p>{{authService.dataUtilisateur.numCompteBkPropApp}}</p>
+          </div>
+
+        </div>
+
+<!--        <div class="sec1-body-infos">-->
+<!--          <div class="sec1-body-info">-->
+<!--            <h4>Besoins d’accessibilité</h4>-->
+<!--            <p>Non précisés</p>-->
+<!--          </div>-->
+<!--        </div>-->
+      </div>
+      <hr>
+      <div class="sec1-body mt-3">
+        <div class="sec1-body-title">
+          <h1>Contact</h1>
+          <a href="">Modifier</a>
+        </div>
+        <br>
+        <p>Partagez ces informations pour recevoir des mises à jour de voyages et des alertes liées à l’activité de votre compte..</p>
+
+        <div class="sec1-body-infos">
+          <div class="sec1-body-info">
+            <h4>Numéro de téléphone portable</h4>
+            <p>{{authService.dataUtilisateur.numTele}}</p>
+          </div>
+
+          <div class="sec1-body-info">
+            <h4>Adresse e-mail</h4>
+            <p>{{authService.dataUtilisateur.email}}</p>
+          </div>
+        </div>
+
+        <div class="sec1-body-infos">
+          <div class="sec1-body-info">
+            <h4>Contact en cas d’urgence</h4>
+            <p>{{authService.dataUtilisateur.email}}</p>
+          </div>
+
+          <div class="sec1-body-info">
+            <h4>Adresse</h4>
+            <p>Marraekch </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+<div *ngIf="authService.isUser" class="container ">
+  <header>
+    <div class="photo">
+      <img class="" src="./assets/images/profileEz.png" alt="">
+    </div>
+
+
+    <div class="photo-text">
+      <h1 class="photo-text-h1">{{authService.dataUtilisateur.nom}}  {{authService.dataUtilisateur.prenom}}</h1>
+      <button class="photo-text-btn">Edit profile</button>
+    </div>
+  </header>
+
+  <section>
+    <div class="sec1">
+      <div class="sec1-header">
+        <h1>{{authService.dataUtilisateur.username_Client}}</h1>
+      </div>
+
+      <div class="sec1-body">
+        <div class="sec1-body-title">
+          <h1>Informations de basee</h1>
+          <a href="">Modifier</a>
+        </div><br>
+
+        <p>Assurez-vous que ces informations correspondent à votre pièce d’identité pour le voyage, par exemple votre passeport.</p>
+
+        <div class="sec1-body-infos">
+          <div class="sec1-body-info">
+            <h4>Nom</h4>
+            <p>{{authService.dataUtilisateur.nom}}</p>
+          </div>
+
+          <div class="sec1-body-info">
+            <h4>Prenom</h4>
+            <p>{{authService.dataUtilisateur.prenom}}</p>
+          </div>
+        </div>
+
+
+<!--                <div class="sec1-body-infos">-->
+<!--                  <div class="sec1-body-info">-->
+<!--                    <h4>CIN</h4>-->
+<!--                    <p>{{authService.dataUtilisateur.cin}}</p>-->
+<!--                  </div>-->
+
+
+        <!--          <div class="sec1-body-info">-->
+        <!--            <h4>Sexe</h4>-->
+        <!--            <p>Homme</p>-->
+        <!--          </div>-->
+        <!--        </div>-->
+        <!--        <div class="sec1-body-infos">-->
+        <!--          <div class="sec1-body-info">-->
+        <!--            <h4>Besoins d’accessibilité</h4>-->
+        <!--            <p>Non précisés</p>-->
+        <!--          </div>-->
+        <!--        </div>-->
+      </div>
+      <hr>
+      <div class="sec1-body mt-3">
+        <div class="sec1-body-title">
+          <h1>Contact</h1>
+          <a href="">Modifier</a>
+        </div>
+        <br>
+        <p>Partagez ces informations pour recevoir des mises à jour de voyages et des alertes liées à l’activité de votre compte..</p>
+
+        <div class="sec1-body-infos">
+          <div class="sec1-body-info">
+            <h4>Numéro de téléphone portable</h4>
+            <p>{{authService.dataUtilisateur.numTeleClient}}</p>
+          </div>
+
+          <div class="sec1-body-info">
+            <h4>Adresse e-mail</h4>
+            <p>{{authService.dataUtilisateur.emailClient}}</p>
+          </div>
+        </div>
+
+        <div class="sec1-body-infos">
+          <div class="sec1-body-info">
+            <h4>Contact en cas d’urgence</h4>
+            <p>{{authService.dataUtilisateur.email_Client}}</p>
+          </div>
+
+          <div class="sec1-body-info">
+            <h4>Adresse</h4>
+            <p>Marraekch </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+
+
+
+<div *ngIf="authService.isAgenceLocation" class="container ">
+  <header>
+    <div class="photo">
+      <img class="" src="./assets/images/profileEz.png" alt="">
+    </div>
+
+    <div class="photo-text">
+      <h1 class="photo-text-h1">{{authService.dataUtilisateur.usernameAgenceLoc}}</h1>
+      <button class="photo-text-btn">Edit profile</button>
+    </div>
+  </header>
+
+  <section>
+    <div class="sec1">
+      <div class="sec1-header">
+        <h1>{{authService.dataUtilisateur.username}}</h1>
+      </div>
+
+      <div class="sec1-body">
+        <div class="sec1-body-title">
+          <h1>Informations de basee</h1>
+          <a >Modifier</a>
+        </div><br>
+
+        <p>Assurez-vous que ces informations correspondent à votre pièce d’identité pour le voyage, par exemple votre passeport.</p>
+
+        <div class="sec1-body-infos">
+          <div class="sec1-body-info">
+            <h4>Nom AgenceLocation</h4>
+            <p>{{authService.dataUtilisateur.username}}</p>
+          </div>
+        </div>
+
+      </div>
+      <hr>
+      <div class="sec1-body mt-3">
+        <div class="sec1-body-title">
+          <h1>Contact</h1>
+          <a href="">Modifier</a>
+        </div>
+        <br>
+        <p>Partagez ces informations pour recevoir des mises à jour de voyages et des alertes liées à l’activité de votre compte..</p>
+
+        <div class="sec1-body-infos">
+          <div class="sec1-body-info">
+            <h4>Numéro de téléphone portable</h4>
+            <p>{{authService.dataUtilisateur.numTelephone}}</p>
+          </div>
+
+          <div class="sec1-body-info">
+            <h4>Adresse e-mail</h4>
+            <p>{{authService.dataUtilisateur.raisonSocialAg}}</p>
+          </div>
+        </div>
+
+        <div class="sec1-body-infos">
+          <div class="sec1-body-info">
+            <h4>Contact en cas d’urgence</h4>
+            <p>{{authService.dataUtilisateur.raisonSocialAg}}</p>
+          </div>
+
+          <div class="sec1-body-info">
+            <h4>Adresse</h4>
+            <p>Marraekch </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+

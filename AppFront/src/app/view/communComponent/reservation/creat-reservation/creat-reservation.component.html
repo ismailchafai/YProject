@@ -1,0 +1,156 @@
+
+<div class="container mt-5">
+
+  <mat-card>
+    <mat-card-header><mat-card-title> CRUD Client </mat-card-title> </mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+
+      <p-toolbar [ngStyle]="{'margin': '2rem'}" class="custom-toolbar" >
+        <div class="p-toolbar-group-left">
+          <p-button (click)="exportToPDF()" label="Exporte" icon="pi pi-file-export" styleClass="p-button-success"></p-button>
+        </div>
+
+        <!--<div class="p-toolbar-group-right">
+
+          <mat-form-field appearance="outline">
+            <mat-label>Search</mat-label>
+            <input matInput (change)="search($event)">
+          </mat-form-field>
+        </div>-->
+        <div class="p-toolbar-group-right">
+          <div class="container d-flex" >
+            <input type="text" name="" placeholder="Search..." (input)="search($event)">
+            <div class="search"></div>
+          </div>
+        </div>
+
+      </p-toolbar>
+      <div class="table-wrapper">
+        <table id="content" matSort mat-table [dataSource]="dataSource" class="mat-elevation-z1 ">
+
+          <ng-container matColumnDef="ref"> <!-- Utilisation de 'id' au lieu de 'Id' -->
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Ref </th>
+            <td mat-cell *matCellDef="let element"> {{element.ref}} </td>
+          </ng-container>
+          <ng-container matColumnDef="LieuPrise"> <!-- Utilisation de 'id' au lieu de 'Id' -->
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>LieuPrise </th>
+            <td mat-cell *matCellDef="let element"> {{element.LieuPrise}} </td>
+          </ng-container>
+          <ng-container matColumnDef="LieuRetour"> <!-- Utilisation de 'id' au lieu de 'Id' -->
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>LieuRetour </th>
+            <td mat-cell *matCellDef="let element"> {{element.LieuRetour}} </td>
+          </ng-container>
+          <ng-container matColumnDef="Description"> <!-- Utilisation de 'id' au lieu de 'Id' -->
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Description </th>
+            <td mat-cell *matCellDef="let element"> {{element.Description}} </td>
+          </ng-container>
+          <ng-container matColumnDef="DateDebut"> <!-- Utilisation de 'id' au lieu de 'Id' -->
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> DateDebut </th>
+            <td mat-cell *matCellDef="let element"> {{element.DateDebut}} </td>
+          </ng-container>
+          <ng-container matColumnDef="DateFin"> <!-- Utilisation de 'id' au lieu de 'Id' -->
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> DateFin </th>
+            <td mat-cell *matCellDef="let element"> {{element.DateFin}} </td>
+          </ng-container>
+          <ng-container matColumnDef="HeureDebut"> <!-- Utilisation de 'id' au lieu de 'Id' -->
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> HeureDebut </th>
+            <td mat-cell *matCellDef="let element"> {{element.HeureDebut}} </td>
+          </ng-container>
+          <ng-container matColumnDef="HeureFin"> <!-- Utilisation de 'id' au lieu de 'Id' -->
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> HeureFin </th>
+            <td mat-cell *matCellDef="let element"> {{element.HeureFin}} </td>
+          </ng-container>
+          <ng-container matColumnDef="voiture"> <!-- Utilisation de 'id' au lieu de 'Id' -->
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> voiture.Matricule </th>
+            <td mat-cell *matCellDef="let element"> {{element.voiture.matricule}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="appartement"> <!-- Utilisation de 'id' au lieu de 'Id' -->
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> appartement.code </th>
+            <td mat-cell *matCellDef="let element"> {{element.appartement.code}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="client"> <!-- Utilisation de 'id' au lieu de 'Id' -->
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> client.cin </th>
+            <td mat-cell *matCellDef="let element"> {{element.client.cin}} </td>
+          </ng-container>
+
+
+
+
+
+
+
+          <tr mat-header-row *matHeaderRowDef="ListeColum"></tr>
+          <tr mat-row *matRowDef="let row; columns: ListeColum;"></tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                       showFirstLastButtons
+                       aria-label="Select page of periodic elements">
+        </mat-paginator>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+
+
+</div>
+<!--
+<p-dialog [(visible)]="display" [style]="{width: '600px',height:'600px'}" header="Product Details" [modal]="true" styleClass="p-fluid">
+  <div class="field col">
+    <label class="form-label">Ref</label>
+    <input class="form-control" type="text" pInputText id="ref" [(ngModel)]="item.ref" required autofocus/>
+  </div>
+  <div class="field col">
+    <label class="form-label">LieuPrise</label>
+    <input class="form-control" type="text" pInputText id="LieuPrise" [(ngModel)]="item.LieuPrise" required autofocus/>
+  </div>
+  <div class="field col">
+    <label class="form-label">LieuRetour</label>
+    <input class="form-control" type="text" pInputText id="LieuRetour" [(ngModel)]="item.LieuRetour" required autofocus/>
+  </div>
+  <div class="field col">
+    <label class="form-label">Description</label>
+    <input class="form-control" type="text" pInputText id="Description" [(ngModel)]="item.Description" required autofocus/>
+  </div>
+  <div class="field col">
+    <label class="form-label">DateDebut</label>
+    <input class="form-control" type="text" pInputText id="DateDebut" [(ngModel)]="item.DateDebut" required autofocus/>
+  </div>
+  <div class="field col">
+    <label class="form-label">DateFin</label>
+    <input class="form-control" type="text" pInputText id="DateFin" [(ngModel)]="item.DateFin" required autofocus/>
+  </div>
+
+  <div class="field col">
+    <label class="form-label">HeureDebut</label>
+    <input class="form-control" type="text" pInputText id="HeureDebut" [(ngModel)]="item.HeureDebut" required autofocus/>
+  </div>
+  <div class="field col">
+    <label class="form-label">HeureFin</label>
+    <input class="form-control" type="text" pInputText id="HeureFin" [(ngModel)]="item.HeureFin" required autofocus/>
+  </div>
+  <div class="field col">
+    <label class="form-label">voiture</label>
+    <input class="form-control" type="text" pInputText id="voiture" [(ngModel)]="item.voiture.matricule" required autofocus/>
+  </div>
+  <div class="field col">
+    <label class="form-label">appartement</label>
+    <input class="form-control" type="text" pInputText id="appartement" [(ngModel)]="item.appartement.code" required autofocus/>
+  </div>
+  <div class="field col">
+    <label class="form-label">client</label>
+    <input class="form-control" type="text" pInputText id="client" [(ngModel)]="item.client.cin" required autofocus/>
+  </div>
+
+  <ng-template pTemplate="footer">
+    <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()" ></button>
+    <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveObject()"></button>
+  </ng-template>
+</p-dialog>
+-->
+
+
+
+

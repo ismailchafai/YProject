@@ -1,0 +1,149 @@
+<div class="table-wrapper mt-10">
+  <mat-card>
+    <mat-card-header><mat-card-title> Categories  </mat-card-title> </mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+
+      <p-toolbar [ngStyle]="{'margin': '2rem'}" class="custom-toolbar" >
+        <div class="p-toolbar-group-left">
+          <p-button  type="button"  (click)="creatCategorie()" class="mx-2 " label="New" icon="pi pi-plus"></p-button>
+          <p-button (click)="exportToPDF()" label="Exporte" icon="pi pi-file-export" styleClass="p-button-success"></p-button>
+        </div>
+
+
+        <div class="p-toolbar-group-right">
+          <div class="container d-flex" >
+            <input type="text" name="" placeholder="Search..." (input)="search($event)">
+            <div class="search"></div>
+          </div>
+        </div>
+
+
+
+        <div *ngIf="displaysucces">
+          <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+            <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+            </symbol>
+            <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+            </symbol>
+            <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+            </symbol>
+          </svg>
+
+          <div class="alert alert-success d-flex align-items-center" role="alert">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+            <div>
+              Categorie  a été enregestre
+            </div>
+          </div>
+
+        </div>
+
+        <!--        <div class="p-toolbar-group-right">-->
+
+<!--          <mat-form-field appearance="outline">-->
+<!--            <mat-label>Search</mat-label>-->
+<!--            <input matInput (input)="search($event)">-->
+<!--          </mat-form-field>-->
+<!--        </div>-->
+
+      </p-toolbar>
+
+      <table id="content" matSort mat-table [dataSource]="dataSource" class="mat-elevation-z1 ">
+
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
+          <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="libelle">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Libelle</th>
+          <td mat-cell *matCellDef="let element"> {{element.libelle}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="photo">
+          <th mat-header-cell *matHeaderCellDef >photo</th>
+          <td mat-cell *matCellDef="let element"><i class="bi bi-image" (click)="photoByCode(element)"></i></td>
+        </ng-container>
+
+
+
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>action</th>
+          <td mat-cell *matCellDef="let element">
+            <a  (click)=editCategorie(element)><i class="bi bi-pencil mx-2 btn btn-outline-success rounded-5"></i></a>
+            <a (click)="delete(element.libelle)"><i class="bi bi-trash mx-2 btn btn-outline-danger rounded-5"></i></a>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                     showFirstLastButtons
+                     aria-label="Select page of periodic elements">
+      </mat-paginator>
+
+    </mat-card-content>
+  </mat-card>
+
+</div>
+
+
+<p-dialog [maximizable]="true"  [(visible)]="display" [style]="{width: '600px',height:'600px'}" header="Product Details" [modal]="true" styleClass="p-fluid">
+  <div class="row">
+    <div class="col-6">
+      <label class="form-label">categorie</label>
+      <select  class="form-select form-select-lg " aria-label=".form-select-lg example"  [(ngModel)]="item.libelle" >
+        <option *ngFor="let categorie of categoriesAppartemet"   value="{{categorie}}">{{categorie}}</option>
+      </select>
+  </div>
+  </div>
+
+  <div class="col-12 mt-5" *ngIf="isCreate">
+<!--    <div class="dropzone" appDrag (files)="fileDropped($event)"   (click)="selectFile.click()">-->
+<!--      <div class="dropzone-text">-->
+<!--        <div class="center">Drag and drop your file or-->
+<!--          <a class="browser-button" (click)="selectFile.click()">browse</a> a file-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+    <div class="zone" >
+      <div id="dropZ" appDrag (files)="fileDropped($event)"  (click)="selectFile.click()">
+        <i class="fa fa-cloud-upload"></i>
+        <div>Drag and drop your file here</div>
+        <span>OR</span>
+        <div class="selectFile">
+          <label for="file">Select file</label>
+          <input type="file" multiple value="select" #selectFile (change)="oneFileSelected($event)" id="file">
+        </div>
+        <p>File size limit : 10 MB</p>
+      </div>
+    </div>
+
+<!--    <div>-->
+<!--      <input style="display: none" type="file" multiple value="select" #selectFile (change)="oneFileSelected($event)">-->
+<!--    </div>-->
+
+        <div style="position: relative" class="mt-5">
+<!--          <span class="btn-remove" (click)="removeImages()">x</span>-->
+          <img *ngIf="isKayna" [src]="this.item.images.url">
+        </div>
+  </div>
+
+  <ng-template pTemplate="footer">
+    <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()" ></button>
+    <button *ngIf="isCreate" pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveObject()"></button>
+    <button *ngIf="isEdit" pButton pRipple label="Update" icon="pi pi-check" class="p-button-text" (click)="updateObject()"></button>
+  </ng-template>
+</p-dialog>
+
+
+<p-dialog  [maximizable]="true"  [(visible)]="isVisible" [style]="{width: '500px',height:'500px'}" header="Product Details" [modal]="true" styleClass="p-fluid">
+  <div class="iamges" >
+    <img   [src]="this.image"  alt="" width="200px" height="200px">
+  </div>
+</p-dialog>
+

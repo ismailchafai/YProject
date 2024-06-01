@@ -1,0 +1,140 @@
+
+table {
+  width: 70%;
+
+}
+.mat-mdc-table tbody, .mat-mdc-table tfoot, .mat-mdc-table thead, .mat-mdc-cell, .mat-mdc-footer-cell, .mat-mdc-header-row, .mat-mdc-row, .mat-mdc-footer-row, .mat-mdc-table .mat-mdc-header-cell {
+  background: white;
+  color: black;
+
+}
+
+.mat-mdc-card {
+  border-radius: var(--mdc-elevated-card-container-shape);
+  dth: 0;
+  /* border-style: solid; */
+  border-color: var(--mdc-elevated-card-container-color);
+  box-shadow: var(--mdc-elevated-card-container-elevation);
+  background-color: white;
+  margin-top: 7rem;
+}
+
+a{
+  cursor: pointer;
+}
+
+
+/* author: Ali zahid
+https://codepen.io/alx_code/pen/OJJvKKJ */
+/*
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body{
+    width: 100%;
+    height: 100%;
+}
+body{
+    background: #262626;
+} */
+.container .search{
+  position: relative;
+  /*margin:auto;*/
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 60px;
+  height: 60px;
+  background-color: rgb(174, 161, 164);
+  /* background-color: crimson; */
+  border-radius: 50%;
+  z-index: 4;
+  box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.4);
+  transition: 1s all;
+}
+.container .search:hover{
+  cursor: pointer;
+}
+.container .search::before{
+  content: " ";
+  position: absolute;
+  margin: auto;
+  top: 22px;
+  left: 22px;
+  right: 0;
+  bottom: 0;
+  width: 12px;
+  height: 2px;
+  background-color: #fff;
+  transform: rotate(45deg);
+  transition: 0.5s all;
+}
+.container .search::after{
+  content: " ";
+  position: absolute;
+  margin: auto;
+  top: -5px;
+  left: -5px;
+  right: 0;
+  bottom: 0;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 2px solid #fff ;
+  transition: 0.5s all;
+}
+.container input{
+  position: relative;
+  margin-top: auto;
+  margin-bottom: auto;
+  right: -60px;
+  width: 50px;
+  height: 50px;
+  outline: none;
+  border: none;
+  background-color: #2196f3;
+  color: #fff;
+  text-shadow: 0 0 10px crimson;
+  padding: 0 80px 0 20px;
+  border-radius: 30px;
+  box-shadow: 0 0 25px 0 #ffffff, 0 20px 25px 0 rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  z-index: 5;
+  letter-spacing: 0.1em;
+  transition: 1s all;
+
+}
+.container input:hover{
+  cursor: pointer;
+}
+.container input:focus{
+  width: 300px;
+  opacity: 1;
+  cursor: text;
+}
+.container input:focus ~ .search{
+  right: -250px;
+  background-color: #151515;
+  z-index: 6;
+}
+.container input:focus ~ .search::before{
+  top: 0;
+  left: 0;
+  width: 25px;
+}
+.container input:focus ~ .search::after{
+  top: 0;
+  left: 0;
+  width: 25px;
+  height: 2px;
+  border: none;
+  background-color: #fff;
+  border-radius: 0;
+  transform: rotate(-45deg);
+}
+.container input::placeholder{
+  color: #fff;
+}

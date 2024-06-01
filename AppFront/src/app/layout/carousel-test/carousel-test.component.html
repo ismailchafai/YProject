@@ -1,0 +1,25 @@
+
+<div class="container" *ngIf="dataVoiture.length!=0">
+  <div class="slider-wrapper">
+    <button id="prev-slide" class="slide-button material-symbols-rounded">
+      chevron_left
+    </button>
+    <ul class="image-list" style="display:grid;grid-template-columns: repeat({{dataVoiture.length}}, 1fr);width: 1500px;display: grid;height: 300px;    padding-top: 10px;">
+
+      <div class="card mx-4 "  *ngFor="let it of dataVoiture">
+        <img class="image-item image img-fluid"  [src]=returnUrl(it) alt="img-1" />
+        <div class="info">
+          <h1>{{it.nomModele}}</h1>
+          <p>categorie {{it.categorie.libelle}} modele {{it.annee}} {{ it.boitevitesse }}
+            nombre de place  {{it.nbrPlace}} </p>
+          <a href="#" class="btn"  routerLink="/reservationInformation/{{it.matricule}}" >Reserver</a>
+        </div>
+      </div>
+
+    </ul>
+  </div>
+
+
+
+</div>
+

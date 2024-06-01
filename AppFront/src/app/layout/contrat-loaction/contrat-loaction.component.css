@@ -1,0 +1,77 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+}
+
+.contract {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.logo {
+  display: block;
+  margin: 0 auto;
+  width: 100px; /* Ajustez la taille selon vos besoins */
+}
+
+h1, h2 {
+  color: #333;
+}
+
+.info {
+  margin-bottom: 20px;
+}
+
+.info h2 {
+  color: #666;
+  border-bottom: 1px solid #ccc;
+}
+
+.info ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.info ul li {
+  margin-bottom: 10px;
+}
+
+.signature {
+  margin-top: 20px;
+}
+
+.signature p {
+  margin-bottom: 10px;
+}
+
+.signature p:last-child {
+  margin-bottom: 0; /* Supprime la marge en bas pour le dernier paragraphe */
+}
+.cost-table {
+  width: 100%;
+}
+
+.cost-table tr:first-child {
+  background-color: #98FB98; /* Pistache */
+}
+
+.cost-table td {
+  padding: 5px;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+article {
+  margin-bottom: 20px;
+}
+
+article h3 {
+  color: #333;
+  margin-bottom: 5px;
+}

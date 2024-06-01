@@ -1,0 +1,207 @@
+
+<div class="container mt-5">
+
+  <mat-card>
+    <mat-card-header><mat-card-title> CRUD CONTRAT </mat-card-title> </mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+
+      <p-toolbar [ngStyle]="{'margin': '2rem'}" class="custom-toolbar" >
+        <div class="p-toolbar-group-left">
+          <p-button  type="button"  (click)="showDialog()" class="mx-2 " label="New" icon="pi pi-plus"></p-button>
+          <p-button (click)="exportToPDF()" label="Exporte" icon="pi pi-file-export" styleClass="p-button-success"></p-button>
+        </div>
+        <div class="p-toolbar-group-right">
+          <div class="container d-flex" >
+            <input type="text" name="" placeholder="Search..." (input)="search($event)">
+            <div class="search"></div>
+          </div>
+        </div>
+
+        <!--        <div class="p-toolbar-group-right">-->
+
+        <!--          <mat-form-field appearance="outline">-->
+        <!--            <mat-label>Search</mat-label>-->
+        <!--            <input matInput (input)="search($event)">-->
+        <!--          </mat-form-field>-->
+        <!--        </div>-->
+
+      </p-toolbar>
+
+      <table id="content" matSort mat-table [dataSource]="dataSource" class="mat-elevation-z1 ">
+
+        <ng-container matColumnDef="numContrat"> <!-- Utilisation de 'id' au lieu de 'Id' -->
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Num Contrat </th>
+          <td mat-cell *matCellDef="let element"> {{element.numContrat}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="prixHT">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Prix HT </th>
+          <td mat-cell *matCellDef="let element"> {{element.prixHT}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="TVA">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>TVA </th>
+          <td mat-cell *matCellDef="let element"> {{element.tva}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="modelePaiement">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Modele Paiement </th>
+          <td mat-cell *matCellDef="let element"> {{element.modelePaiement}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="dateSignature">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Date Signature </th>
+          <td mat-cell *matCellDef="let element"> {{element.dateSignature}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="dureeRetard">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Duree Retard</th>
+          <td mat-cell *matCellDef="let element"> {{element.dureeRetard}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Rest">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Rest</th>
+          <td mat-cell *matCellDef="let element"> {{element.rest}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="riflocation">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Rif location</th>
+          <td mat-cell *matCellDef="let element"> {{element.location.ref}} </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef >Action</th>
+          <td mat-cell *matCellDef="let element" >
+            <a  (click)=showUpdate(element.numContrat)><i class="bi bi-pencil mx-2 btn btn-outline-success rounded-5"></i></a>
+            <a><i (click)="handlDelete(element.numContrat)" class="bi bi-trash mx-2 btn btn-outline-danger rounded-5"></i></a>
+          </td>
+        </ng-container>
+
+
+
+        <tr mat-header-row *matHeaderRowDef="ListeColum"></tr>
+        <tr mat-row *matRowDef="let row; columns: ListeColum;"></tr>
+      </table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                     showFirstLastButtons
+                     aria-label="Select page of periodic elements">
+      </mat-paginator>
+
+    </mat-card-content>
+  </mat-card>
+
+</div>
+
+
+<p-dialog [(visible)]="display"  [style]="{width: '600px',height:'600px'}" [header]="displaySave?'Save Contrat':'Update Contrat'" [modal]="true" styleClass="p-fluid">
+
+
+
+  <!--  SaveContrat-->
+  <div *ngIf="this.displaySave" >
+    <div class="field col">
+      <label class="form-label">numContrat</label>
+      <input class="form-control" type="number" pInputText id="name" [(ngModel)]="item.numContrat" required autofocus/>
+    </div>
+
+    <div class="field col">
+      <label class="form-label">Modele Paiement</label>
+      <input class="form-control" type="text" pInputText id="name1" [(ngModel)]="item.modelePaiement" required autofocus/>
+    </div>
+
+    <div class="field col">
+      <label class="form-label">Prix HT</label>
+      <input class="form-control" type="number" pInputText id="name2" [(ngModel)]="item.prixHT" required autofocus/>
+    </div>
+
+    <div class="field col">
+      <label class="form-label">TVA</label>
+      <input class="form-control" type="number" pInputText id="name3" [(ngModel)]="item.tva" required autofocus/>
+    </div>
+
+    <div class="field col">
+      <label class="form-label">Rest</label>
+      <input class="form-control" type="number" pInputText id="name6" [(ngModel)]="item.rest" required autofocus/>
+    </div>
+
+    <div class="field col">
+      <label class="form-label">Date Signature</label>
+      <input class="form-control" type="datetime-local" pInputText id="name4" [(ngModel)]="item.dateSignature" required autofocus/>
+    </div>
+
+    <div class="field col">
+      <label class="form-label">Duree Retard</label>
+      <input class="form-control" type="number" pInputText id="name5" [(ngModel)]="item.dureeRetard" required autofocus/>
+    </div>
+    <div class="field col">
+      <label class="form-label">Ref Location</label>
+      <input class="form-control" type="text" pInputText id="name7" [(ngModel)]="item.location.ref" required autofocus/>
+    </div>
+
+
+
+
+  </div>
+
+
+  <!--  UpdateContrat-->
+
+  <div *ngIf="this.displayUpdate" >
+    <div class="field col">
+      <label class="form-label">numContrat</label>
+      <input class="form-control" type="number" pInputText id="name11" [(ngModel)]="contrat.numContrat" required autofocus/>
+    </div>
+
+    <div class="field col">
+      <label class="form-label">Modele Paiement</label>
+      <input class="form-control" type="text" pInputText id="name12" [(ngModel)]="contrat.modelePaiement" required autofocus/>
+    </div>
+
+    <div class="field col">
+      <label class="form-label">Prix HT</label>
+      <input class="form-control" type="number" pInputText id="name22" [(ngModel)]="contrat.prixHT" required autofocus/>
+    </div>
+
+    <div class="field col">
+      <label class="form-label">TVA</label>
+      <input class="form-control" type="number" pInputText id="name13" [(ngModel)]="contrat.tva" required autofocus/>
+    </div>
+
+    <div class="field col">
+      <label class="form-label">Rest</label>
+      <input class="form-control" type="number" pInputText id="name16" [(ngModel)]="contrat.rest" required autofocus/>
+    </div>
+
+    <div class="field col">
+      <label class="form-label">Date Signature</label>
+      <input class="form-control" type="datetime-local" pInputText id="name14" [(ngModel)]="contrat.dateSignature" required autofocus/>
+    </div>
+
+    <div class="field col">
+      <label class="form-label">Duree Retard</label>
+      <input class="form-control" type="number" pInputText id="name15" [(ngModel)]="contrat.dureeRetard" required autofocus/>
+    </div>
+    <div class="field col">
+      <label class="form-label">Ref Location</label>
+      <input class="form-control" type="text" pInputText id="name17" [(ngModel)]="contrat.location.ref" required autofocus/>
+    </div>
+
+  </div>
+
+  <ng-template pTemplate="footer">
+    <span *ngIf="this.displaySave" >
+      <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()" ></button>
+    <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveObject()"></button>
+    </span>
+    <span *ngIf="this.displayUpdate">
+      <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()" ></button>
+      <button pButton pRipple label="Update" icon="pi pi-check" class="p-button-text" (click)="update()"></button>
+    </span>
+  </ng-template>
+</p-dialog>
+
+
+
+

@@ -1,0 +1,10 @@
+
+.pie{
+  flex:1;
+  box-shadow:10px 10px 5px #aaaaaa;
+
+}
+.line{
+  flex:1;
+  box-shadow:10px 10px 5px #aaaaaa;
+}

@@ -1,0 +1,120 @@
+
+<div class="container mt-5">
+
+  <mat-card>
+    <mat-card-header><mat-card-title> CRUD VOITURE </mat-card-title> </mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+
+      <p-toolbar [ngStyle]="{'margin': '2rem'}" class="custom-toolbar" >
+        <div class="p-toolbar-group-left">
+          <p-button  type="button"  (click)="showDialog()" class="mx-2 " label="New" icon="pi pi-plus"></p-button>
+          <p-button  (click)="exportToPDF()" label="Exporte" icon="pi pi-file-export" styleClass="p-button-success"></p-button>
+        </div>
+
+        <div class="p-toolbar-group-right">
+
+          <mat-form-field appearance="outline">
+            <mat-label>Search</mat-label>
+            <input matInput (change)="search($event)">
+          </mat-form-field>
+        </div>
+
+      </p-toolbar>
+
+      <table id="content" matSort mat-table [dataSource]="dataSource" class="mat-elevation-z1 ">
+
+        <ng-container matColumnDef="code"> <!-- Utilisation de 'id' au lieu de 'Id' -->
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>code </th>
+          <td mat-cell *matCellDef="let element"> {{element.code}} </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="matriculeVoiture"> <!-- Utilisation de 'id' au lieu de 'Id' -->
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>matriculeVoiture </th>
+          <td mat-cell *matCellDef="let element"> {{element.matriculeVoiture}} </td>
+        </ng-container>
+
+
+
+        <ng-container matColumnDef="cinClient"> <!-- Utilisation de 'id' au lieu de 'Id' -->
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>cinClient </th>
+          <td mat-cell *matCellDef="let element"> {{element.cinClient}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="iceAgence"> <!-- Utilisation de 'id' au lieu de 'Id' -->
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>iceAgence </th>
+          <td mat-cell *matCellDef="let element"> {{element.iceAgence}} </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef >Action</th>
+          <td mat-cell *matCellDef="let element" >
+            <a  ><i class="bi bi-pencil mx-2 btn btn-outline-success rounded-5"></i></a>
+            <a><i (click)="handlDelete(element.libelle)" class="bi bi-trash mx-2 btn btn-outline-danger rounded-5"></i></a>
+          </td>
+        </ng-container>
+
+
+
+        <tr mat-header-row *matHeaderRowDef="ListeColum"></tr>
+        <tr mat-row *matRowDef="let row; columns: ListeColum;"></tr>
+      </table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                     showFirstLastButtons
+                     aria-label="Select page of periodic elements">
+      </mat-paginator>
+
+    </mat-card-content>
+  </mat-card>
+
+</div>
+
+
+<p-dialog [(visible)]="display" [style]="{width: '600px',height:'600px'}" header="Product Details" [modal]="true" styleClass="p-fluid">
+<div class="form-group">
+  <label>code</label>
+  <inpu type="text" [ngModel]="item.code"/>
+</div>
+  <div class="form-group">
+  <label>matricule</label>
+  <inpu type="text" [ngModel]="item.matriculeVoiture"/>
+</div>
+  <div class="form-group">
+  <label>cinClizent</label>
+  <inpu type="text" [ngModel]="item.cinClient"/>
+</div>
+
+  <div class="form-group">
+  <label>iceagence</label>
+  <inpu type="text" [ngModel]="item.iceAgence"/>
+</div>
+
+  <div class="col-6">
+    <label class="form-label">code</label>
+    <input class="form-control" type="text" pInputText placeholder="couleur" [(ngModel)]="item.code"  required autofocus/>
+  </div>
+  <div class="col-6">
+    <label class="form-label">matriculeVoiture</label>
+    <input class="form-control" type="text" pInputText placeholder="matriculeVoiture" [(ngModel)]="item.matriculeVoiture"  required autofocus/>
+  </div>
+  <div class="col-6">
+    <label class="form-label">couleur</label>
+    <input class="form-control" type="text" pInputText placeholder="cinClient" [(ngModel)]="item.cinClient" required autofocus/>
+  </div>
+  <div class="col-6">
+    <label class="form-label">couleur</label>
+    <input class="form-control" type="text" pInputText placeholder="iceAgence" [(ngModel)]="item.iceAgence"  required autofocus/>
+  </div>
+
+
+  <ng-template pTemplate="footer">
+    <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()" ></button>
+    <button *ngIf="isCreat" pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveObject()"></button>
+    <button *ngIf="isEdit" pButton pRipple label="Update" icon="pi pi-check" class="p-button-text" ></button>
+  </ng-template>
+</p-dialog>
+
+
+

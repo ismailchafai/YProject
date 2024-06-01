@@ -1,0 +1,253 @@
+.page-resrevation{
+  margin-top: 2px;
+}
+.page-resrevation-titre{
+  margin-left: 10px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.page-resrevation-titre .bi {
+  color: blue;
+  font-size: 38px;
+  vertical-align: middle;
+}
+
+.page-resrevation-titre div {
+  display: inline-block;
+  font-size: 16px;
+  margin-left: 5px;
+  color: #6b6b6b;
+  vertical-align: middle;
+}
+.reserver{
+  padding-top: 5px;
+  border-top: 1px solid  rgb(205, 202, 202);
+  min-width: 500px;
+  min-height: 500px;
+}
+.reserver-headre{
+  border-bottom: 1px solid  rgb(205, 202, 202);
+  margin: 0px;
+}
+.reserver-headre ul{
+  margin-left: 2px;
+}
+
+.nav-item{
+  margin-left: 10px;
+  padding: 10px;
+  font-size: 18px;
+  cursor: pointer;
+}
+.reserver-headre li {
+  cursor: pointer;
+}
+.container-fluid{
+  margin-left: 20px;
+  padding-top: 0;
+  justify-content: space-between;
+
+}
+.card.cardOne{
+  margin-top: 15px;
+  min-height: 350px;
+  border: 1px solid rgb(205, 202, 202);
+  border-radius: 20px;
+
+}
+
+.card.cardTwo{
+  margin-top: 15px;
+  /*min-height: 200px;*/
+  border: 1px solid rgb(205, 202, 202);
+  border-radius: 20px;
+}
+
+.card.cardTree{
+  margin-top: 15px;
+  min-height: 200px;
+  border: 1px solid  rgb(205, 202, 202);
+  border-radius: 20px;
+}
+
+.card.cardfor{
+  margin-top: 15px;
+  min-height: 460px;
+  border: 1px solid rgb(205, 202, 202);
+  border-radius: 20px;
+}
+
+
+.sec1-body-infos{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-columns: 100px;
+}
+
+.content{
+  display: inline-block;
+}
+.photo{
+  float: right;
+
+}
+.photo img {
+  margin-left: -19rem;
+  border-radius: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  transition: transform 0.3s ease;
+  width: 280px;
+}
+
+.photo img:hover {
+  transform: scale(1.1);
+}
+
+.content span,.content a{
+  margin-left: 12px;
+}
+
+hr{
+  border:  2px solid rgb(205, 202, 202);
+}
+
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.multi-column-list {
+  display: block;
+}
+
+.multi-column-list li {
+  margin-bottom: 20px;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+
+  color: #333;
+}
+
+.btn-export{
+  margin-left: 10rem;
+  padding: 8px 8px;
+  color: #ef4d48;
+  font-size: 17px;
+  background-color: transparent;
+  border: 1px solid #ef4d48;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.btn-export:hover{
+  background-color: #ef4d48;
+  color: #eee;
+}
+.btn-export:active{
+  background-color: transparent;
+  color: #ef4d48;
+}
+.card.cardfor  .btn-rserver{
+  margin-top: 0px;
+  padding: 16px 16px;
+  color: #ef4d48;
+  font-size: 20px;
+  background-color: transparent;
+  border: 1px solid  #ef4d48;
+  border-radius: 20px;
+  width: 70%;
+  align-items: center;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.card.cardfor  .btn-rserver:hover{
+  background-color: #ef4d48;
+  color: #eee;
+}
+.card.cardfor  .btn-rserver:active{
+  background-color: transparent;
+  color: #ef4d48;
+}
+.grid-container4 {
+  display: grid;
+  column-gap: 27px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  font-size: 12px;
+}
+hr{
+  border: 2 solid rgb(43, 40, 40);
+}
+
+.grid-container4 span{
+  font-size: 20px;
+}
+.grid-container4 a{
+  font-size: 14px;
+}
+
+.card-body-ez{
+  padding: 20px;
+}
+
+
+
+
+/*?????????????????????????????????????????????????????????????????????? Calendrie*/
+
+
+
+
+button,
+input {
+
+  outline: none;
+  border: none;
+  padding: 16px;
+  font-size: 18px;
+}
+
+input {
+  width: 100%;
+  text-align: center;
+}
+
+button {
+  cursor: pointer;
+}
+button:nth-last-child(1) {
+  border-bottom-right-radius: 15px;
+  border-top-right-radius: 15px;
+}
+#decrement {
+  border-bottom-left-radius: 15px;
+  border-top-left-radius: 15px;
+}
+
+button:hover {
+  background-color: #e6e6e6;
+}
+button:nth-last-child(1):active {
+  box-shadow: inset -4px 5px 10px rgba(0, 0, 0, 0.5);
+}
+#decrement:active {
+  box-shadow: inset 4px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+
+
+
+
+
+
+
+
+
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+

@@ -1,0 +1,309 @@
+
+.btn-remove{
+  position: absolute;
+  cursor: pointer;
+  top: -10px;
+  right: -10px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: auto;
+  text-align: center;
+}
+
+
+.dropzone{
+  height: 150px;
+  min-width: 100px;
+  display: table;
+  background-color: #eee;
+  width: 300px;
+  border: dashed 1px  #aaa;
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.dropzone-text{
+  display:table-cell;
+  vertical-align: middle;
+}
+button{
+  width: 100px;
+  height: 40px;
+}
+
+.notification {
+  position: fixed;
+  top: -100px; /* Position initiale au-dessus de l'écran */
+  right: 100px;
+  background-color: #22daea;
+  color: white;
+  width: 350px;
+  text-align: center;
+  padding: 15px;
+  border-radius: 5px;
+  z-index: 1000;
+  transition: top 0.5s ease; /* Ajout d'une transition pour une animation fluide */
+  border-bottom: 4px solid yellow; /* Ajout d'une bordure en bas */
+}
+
+.notification.show {
+  top: 50px; /* Position lorsque la notification est affichée */
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0); /* Aucun déplacement au début de l'animation */
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(100%); /* Fait descendre la notification jusqu'en bas */
+  }
+}
+
+
+
+/*?????????????????????????????????????    Search*/
+button{
+  width: 100px;
+  height: 40px;
+}
+
+.notification {
+  position: fixed;
+  top: -100px; /* Position initiale au-dessus de l'écran */
+  right: 100px;
+  background-color: #22daea;
+  color: white;
+  width: 350px;
+  text-align: center;
+  padding: 15px;
+  border-radius: 5px;
+  z-index: 1000;
+  transition: top 0.5s ease; /* Ajout d'une transition pour une animation fluide */
+  border-bottom: 4px solid yellow; /* Ajout d'une bordure en bas */
+}
+
+.notification.show {
+  top: 50px; /* Position lorsque la notification est affichée */
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0); /* Aucun déplacement au début de l'animation */
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(100%); /* Fait descendre la notification jusqu'en bas */
+  }
+}
+
+
+
+/*?????????????????????????????????????    Search*/
+.container .search{
+  position: relative;
+  /*margin:auto;*/
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 60px;
+  height: 60px;
+  background-color: rgb(174, 161, 164);
+  /* background-color: crimson; */
+  border-radius: 50%;
+  z-index: 4;
+  box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.4);
+  transition: 1s all;
+}
+.container .search:hover{
+  cursor: pointer;
+}
+.container .search::before{
+  content: " ";
+  position: absolute;
+  margin: auto;
+  top: 22px;
+  left: 22px;
+  right: 0;
+  bottom: 0;
+  width: 12px;
+  height: 2px;
+  background-color: #fff;
+  transform: rotate(45deg);
+  transition: 0.5s all;
+}
+.container .search::after{
+  content: " ";
+  position: absolute;
+  margin: auto;
+  top: -5px;
+  left: -5px;
+  right: 0;
+  bottom: 0;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 2px solid #fff ;
+  transition: 0.5s all;
+}
+.container input{
+  position: relative;
+  margin-top: auto;
+  margin-bottom: auto;
+  right: -60px;
+  width: 50px;
+  height: 50px;
+  outline: none;
+  border: none;
+  background-color: #2196f3;
+  color: #fff;
+  text-shadow: 0 0 10px crimson;
+  padding: 0 80px 0 20px;
+  border-radius: 30px;
+  box-shadow: 0 0 25px 0 #ffffff, 0 20px 25px 0 rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  z-index: 5;
+  letter-spacing: 0.1em;
+  transition: 1s all;
+
+}
+.container input:hover{
+  cursor: pointer;
+}
+.container input:focus{
+  width: 300px;
+  opacity: 1;
+  cursor: text;
+}
+.container input:focus ~ .search{
+  right: -250px;
+  background-color: #151515;
+  z-index: 6;
+}
+.container input:focus ~ .search::before{
+  top: 0;
+  left: 0;
+  width: 25px;
+}
+.container input:focus ~ .search::after{
+  top: 0;
+  left: 0;
+  width: 25px;
+  height: 2px;
+  border: none;
+  background-color: #fff;
+  border-radius: 0;
+  transform: rotate(-45deg);
+}
+.container input::placeholder{
+  color: #fff;
+}
+
+
+
+
+.zone {
+  margin: auto;
+  position: relative;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: radial-gradient(ellipse at center,#EB6A5A 0,#c9402f 100%);
+  width:60%;
+  height:10%;
+  border:3px dashed white;
+  text-align:center;
+  color: white;
+  z-index: 10;
+  transition: all 0.3s ease-out;
+  box-shadow: 0 0 0 1px rgba(255,255,255,.05),inset 0 0 .25em 0 rgba(0,0,0,.25);
+  .btnCompression {
+    .btn {
+
+    }
+    .active {
+      background: #EB6A5A;
+      color:white;
+    }
+  }
+  i {
+    text-align: center;
+    font-size: 10em;
+    color:#fff;
+    margin-top: 50px;
+  }
+  .selectFile {
+    height: 50px;
+    margin: 20px auto;
+    position: relative;
+    width: 200px;
+  }
+
+  label, input {
+    cursor: pointer;
+    display: block;
+    height: 50px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    border-radius: 5px;
+  }
+
+  label {
+    background: #fff;
+    color:#EB6A5A;
+    display: inline-block;
+    font-size: 1.2em;
+    line-height: 50px;
+    padding: 0;
+    text-align: center;
+    white-space: nowrap;
+    text-transform: uppercase;
+    font-weight: 400;
+    box-shadow: 0 1px 1px gray;
+  }
+
+  input[type=file] {
+    opacity: 0;
+  }
+
+}
+.zone.in {
+  color:white;
+  border-color:white;
+  background: radial-gradient(ellipse at center,#EB6A5A 0,#c9402f 100%);
+  i {
+    color:#fff;
+  }
+  label {
+    background: #fff;
+    color:#EB6A5A;
+  }
+}
+.zone.hover {
+  color:gray;
+  border-color:white;
+  background:#fff;
+  border:5px dashed gray;
+  i {
+    color:#EB6A5A;
+  }
+  label {
+    background: #fff;
+    color:#EB6A5A;
+  }
+}
+.zone.fade {
+  transition: all 0.3s ease-out;
+  opacity: 1;
+}
+
+
+
+

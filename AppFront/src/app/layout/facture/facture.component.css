@@ -1,0 +1,118 @@
+
+/*
+#content {
+  width:70%;
+  margin: 50px auto;
+  border: 2px solid #ccc;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #fff;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+.facture-title {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
+.info-client,
+.info-vehicule {
+  margin-bottom: 20px;
+}
+.info-vehicule {
+  text-align: center;
+}
+
+.total-section {
+  margin-top: 30px;
+}
+
+.total-section h4 {
+  margin-bottom: 10px;
+}
+
+.facture-label {
+  font-weight: bold;
+}*/
+
+#content {
+  width:70%;
+  margin: 50px auto;
+  border: 2px solid #ccc;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #fff;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+.facture-title {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 30px;
+  font-family: cursive;
+}
+
+.invoice-facture{
+  margin-bottom: 20px;
+  position: absolute;
+  bottom: 30rem;
+  left: 56rem;
+
+}
+.invoice-details p {
+  margin: 5px 0;
+}
+.client-details {
+  margin-bottom: 20px;
+}
+.client-details p {
+  margin: 5px 0;
+}
+.additional-info {
+  margin-bottom: 20px;
+}
+.additional-info p {
+  margin: 5px 0;
+}
+.table-header {
+  font-weight: bold;
+  background-color: #f2f2f2;
+}
+.agence-details{
+  position: relative;
+  right: 20rem;
+}
+.total{
+  background-color: cornflowerblue;
+  border-radius: 20px;
+  text-align: center;
+  margin: 8px;
+  font-family: cursive;
+  width: 10rem;
+  position: relative;
+  bottom: 3rem;
+  left: 12rem;
+}
+.page-resrevation-titre{
+  margin-left: 10px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.page-resrevation-titre .bi {
+  color: blue;
+  font-size: 38px;
+  vertical-align: middle;
+}
+#left{
+  left: 68rem;
+  position: absolute;
+  bottom: 39rem;
+}
+#right{
+  position: relative;
+  bottom: 3rem;
+  left: 66rem;
+}

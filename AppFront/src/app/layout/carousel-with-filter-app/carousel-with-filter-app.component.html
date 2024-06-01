@@ -1,0 +1,128 @@
+<div class="container">
+  <div class="slider-wrapper">
+<!--    <h1 class="titre" style="color:#0c0c0c">Discover your new favorite Appartment </h1>-->
+    <ul class="image-list"    style="width: 96rem; margin-left: -9rem;   display: grid;
+  grid-template-columns: repeat({{listCategories.length}}, 1fr);">
+
+      <div class="card" style="width: 18rem;"  *ngFor="let categories of listCategories">
+        <img [src]=returnUrlOne(categories) class="card-img-top" alt="..." (click)="RedirectToFacture()">
+        <div class="info" (click)="RedirectToFacture()" #infoDiv (click)="getH1Content(categories.libelle)">
+          <h1 classe=tit style="color:white" >
+            {{categories.libelle}}
+          </h1>
+        </div>
+      </div>
+
+<!--      -->
+<!--      <div class="card" style="width: 18rem;">-->
+<!--        <img src="assets/categorieAppartement/Luxe.jpeg" class="card-img-top" alt="..." (click)="RedirectToFacture()">-->
+<!--        <div class="info" (click)="RedirectToFacture()" #infoDiv (click)="getH1Content('Appartement de Luxe')">-->
+<!--          <h1 classe=tit style="color:white">Appartement de Luxe</h1>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="card" style="width: 18rem;">-->
+<!--        <img src="assets/categorieAppartement/ppartement%20Meublé.jpeg" class="card-img-top" alt="..." (click)="RedirectToFacture()">-->
+<!--        <div class="info" (click)="RedirectToFacture()" #infoDiv (click)="getH1Content('Appartement Meublé')">-->
+<!--          <h1 classe=tit style="color:white">Appartement Meublé</h1>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="card" style="width: 18rem;">-->
+<!--        <img src="assets/categorieAppartement/no%20mouble.jpeg" class="card-img-top" alt="..." (click)="RedirectToFacture()">-->
+<!--        <div class="info" (click)="RedirectToFacture()" #infoDiv (click)="getH1Content('Appartement Non Meublé')">-->
+<!--          <h1 classe=tit style="color:white">Appartement Non Meublé</h1>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--     <div class="card" style="width: 18rem;">-->
+<!--        <img src="assets/categorieAppartement/Appartement%20avec%20Balcon.jpg" class="card-img-top" alt="..." (click)="RedirectToFacture()">-->
+<!--        <div class="info" (click)="RedirectToFacture()" #infoDiv (click)="getH1Content('Appartement avec Balcon/Terrasse')">-->
+<!--          <h1 classe=tit style="color:white">Appartement avec Balcon/Terrasse</h1>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--     <div class="card" style="width: 18rem;">-->
+<!--        <img src="assets/categorieAppartement/ppartement%20Économique.jpg" class="card-img-top" alt="..." (click)="RedirectToFacture()">-->
+<!--        <div class="info" (click)="RedirectToFacture()" #infoDiv (click)="getH1Content('Appartement Économique')">-->
+<!--          <h1 classe=tit style="color:white">Appartement Économique</h1>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--     <div class="card" style="width: 18rem;">-->
+<!--        <img src="assets/categorieAppartement/Appartement%20en%20Rez-de-Jardin.jpg" class="card-img-top" alt="..." (click)="RedirectToFacture()">-->
+<!--        <div class="info" (click)="RedirectToFacture()" #infoDiv (click)="getH1Content('Appartement en Rez-de-Jardin')">-->
+<!--          <h1 classe=tit style="color:white">Appartement en Rez-de-Jardin</h1>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--     <div class="card" style="width: 18rem;">-->
+<!--        <img src="assets/categorieAppartement/Appartement%20avec%20Vue.jpg" class="card-img-top" alt="..." (click)="RedirectToFacture()">-->
+<!--        <div class="info" (click)="RedirectToFacture()" #infoDiv (click)="getH1Content(' Appartement avec Vue')">-->
+<!--          <h1 classe=tit style="color:white"> Appartement avec Vue</h1>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--     <div class="card" style="width: 18rem;">-->
+<!--        <img src="assets/categorieAppartement/Appartement%20de%20Charme.jpeg" class="card-img-top" alt="..." (click)="RedirectToFacture()">-->
+<!--        <div class="info" (click)="RedirectToFacture()" #infoDiv (click)="getH1Content(' Appartement de Charme')">-->
+<!--          <h1 classe=tit style="color:white">Appartement de Charme</h1>-->
+<!--        </div>-->
+<!--      </div>-->
+    </ul>
+  </div>
+</div>
+
+
+
+
+<p-dialog  [maximizable]="true"  [(visible)]="display" [style]="{width: '90%',height:'90%px'}" header="" [modal]="true" styleClass="p-fluid">
+  <div>
+    <div  class="btn_format">
+      <a class="btn btn-outline-primary rounded-0" [class.active]="formatcard" (click)="handelHorizental()" > <i class="bi bi-list"></i> </a>
+      <a class="btn btn-outline-primary rounded-0"[class.active]="!formatcard" (click)="handelVertical()"> <i class="bi bi-columns-gap"></i> </a>
+    </div>
+  </div>
+<div>
+  <div *ngIf="formatcard" class="container" style=" margin-top: 50px;">
+
+    <div class="card-horizontal" *ngFor="let item of dataApp" >
+      <div class="card-image">
+        <img class="img_horizental" [src]=returnUrl(item) />
+      </div>
+      <div class="card-details_hor" style="  width: 42rem;text-align: center;">
+        <a class="card-action" href="#"><i class="fa fa-heart"></i></a>
+        <div class="card-heading">
+          {{ h1Content }}
+        </div>
+        <div class="card-text">
+          {{item.adresse}}
+        </div>
+        <div class="card-text">
+          $120
+        </div>
+        <a href="#" class="card-button">Purchase</a>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let item of dataApp">
+      <div class="card-sl">
+        <div class="card-image">
+          <img style="width:100%; height: 18rem;" [src]="returnUrl(item)" alt=""/>
+        </div>
+        <a class="card-action" href="#"><i class="fa fa-heart"></i></a>
+        <div class="contenu">
+          <div class="card-heading">
+            {{item.adresse}}
+          </div>
+          <div class="card-text">
+            {{item.code}}
+          </div>
+          <div class="card-text">
+            {{item.nmbrPersont}}
+          </div>
+        </div>
+        <button class="card-button" routerLink="/facteurApparetement/{{item.code}}">Purchase</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</p-dialog>

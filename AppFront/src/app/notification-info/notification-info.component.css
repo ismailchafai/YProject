@@ -1,0 +1,123 @@
+.offcanvas{
+  width:400px;
+  margin-top:65px;
+  margin-right:17px;
+}
+
+.badge{
+  position: relative;
+  top: -7px;
+  left: -1px;
+  width: 21px;
+}
+
+.offcanvas {
+  width: 400px;
+  margin-top: 65px;
+  margin-right: 17px;
+}
+.bodt-c{
+  height:85px;
+  display: flex;
+}
+.b-img{
+  width:20px;
+
+}
+/*.notif_card {*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*  border-radius: 0.5rem;*/
+/*  padding: 1rem;*/
+/*  background-color: #9393c6;*/
+/*  font-size: 16px;*/
+/*  margin-bottom: 3px;*/
+/*  height: 100%;*/
+/*  position: relative;*/
+/*}*/
+
+/*.time, .description .bi{*/
+/*  position: absolute;*/
+/*  margin-right: 1rem;*/
+/*  bottom: 1rem;*/
+/*  right: 1rem;*/
+/*  color: #edebeb;*/
+/*  font-size: 13px;*/
+/*  margin-bottom: -12px;*/
+/*}*/
+
+
+/*img{*/
+/*  width: 50px;*/
+/*  margin-left: -5px;*/
+/*}*/
+
+/*.description{*/
+/*  margin-left: 1rem;*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  justify-content: space-between;*/
+/*  overflow-wrap: break-word;*/
+/*  color: red;*/
+/*  margin-top: 50px;*/
+/*}*/
+
+/*.user_activity{*/
+/*  color: #f8f4f4;*/
+/*  margin-left: 10px;*/
+/*  flex: 1;*/
+/*  margin-top: -32px;*/
+/*}*/
+
+
+
+.bi-check2-all{
+  font-size: 20px;
+  color: aqua;
+}
+.bi-check2{
+  font-size: 20px;
+  color: #dad5d5;
+}
+
+/*.bi-check2-all[_ngcontent-ng-c1214843654]::before {*/
+/*  bottom: -1px;*/
+/*  position: relative;*/
+/*  right: -2px;*/
+/*  font-size: 20px;*/
+/*  content: "\f26f";*/
+/*}*/
+
+/*@media screen and (max-width:550px) {*/
+/*  .container{*/
+/*    margin: 0;*/
+/*  }*/
+/*}*/
+
+
+.dialog-content {
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.bi-check2-all[_ngcontent-ng-c2042359165]::before {
+  bottom: -2px;
+  position: relative;
+  right: -1px;
+  font-size: 20px;
+  content: "\f26f";
+}
+.dialog-content img {
+  width: 300px;
+  height: 300px;
+  margin-bottom: 10px;
+}
+
+.dialog-content .btn {
+  margin-right: 10px;
+}
+
+
+/*//???????????????????????????????????????????????????//*/

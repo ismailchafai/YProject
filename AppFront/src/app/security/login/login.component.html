@@ -1,0 +1,154 @@
+
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+<div class="container" [ngClass]="{'sign-up-mode': signUpMode, 'sign-up-mode2': signUpMode2}">
+
+  <div class="signin-signup">
+
+    <form class="sign-in-form"   [formGroup]="signInForm" (ngSubmit)="handleLogin()">
+      <h2 class="title mb-4">{{ 'Sign in'|translate }}</h2>
+      <div class="input-field">
+        <i class="fas fa-user"></i>
+        <input type="text" placeholder="{{'username'|translate}}"  formControlName="username">
+      </div>
+      <div class="input-field">
+        <i class="fas fa-lock"></i>
+        <input type="{{ passwordVisible1 ? 'text' : 'password' }}" formControlName="password" placeholder="{{'Password'|translate}}">
+        <i class="fas" [class.fa-eye]="passwordVisible1" [class.fa-eye-slash]="!passwordVisible1"  (click)="togglePasswordVisibility1()"></i>
+      </div>
+
+      <div  *ngIf="!isConnected" class="error-message">
+        {{ 'Le mot de passe ou le nom d utilisateur est incorrect.'|translate }}
+      </div>
+
+      <input type="submit" value="{{'Login'|translate}}" class="btn">
+
+    </form>
+
+
+    <form class="sign-up-form" [formGroup]="signUpForm" (ngSubmit)="handleCreat()">
+      <h2 class="title">{{ 'Sign up'|translate }}</h2>
+
+      <div class="btn-group" role="group">
+        <button type="button" class=""  data-mdb-ripple-init (click)="getSelecteUser()" >{{ 'user'|translate }}</button>
+        <button type="button" class=""  data-mdb-ripple-init (click)="getSelecteProp()">{{ 'propAppartement'|translate }}</button>
+        <button type="button" class=""  data-mdb-ripple-init (click)="getSelecteAgence()">{{ 'agencenceLocation'|translate }}</button>
+      </div>
+
+
+      <div class="input-field" *ngIf="userRadio">
+        <i class="bi bi-person-vcard-fill"></i>
+        <input  type="text" placeholder="cin" formControlName="cin"  (input)="inputChangeCin()" >
+      </div>
+
+      <div class="input-field" *ngIf="propRadio">
+        <i class="bi bi-house-check-fill"></i>
+        <input  type="text" placeholder="iceAgApp" formControlName="cin"  (input)="inputChangeCin()" >
+      </div>
+
+
+      <div *ngIf="agenceRadio" class="input-field">
+        <i class="bi bi-building-fill-check"></i>
+        <input  type="text" placeholder="iceAgLoc" formControlName="iceAgLoc"  (input)="inputChangeIceAgLoc()" >
+      </div>
+      <div  *ngIf="cinInput" class="error-message">
+        {{ 'Le cin est requis(au moins 5 caractere).'|translate }}
+      </div>
+      <div  *ngIf="iceAgLocInput" class="error-message">
+        {{ 'Le iceAgLoc est requis(au moins 5 number).'|translate }}
+      </div>
+
+
+      <div class="input-field">
+        <i class="fas fa-user"></i>
+        <input type="text" placeholder="{{'username'|translate}}" formControlName="username"  (input)="inputChangeUsername()" >
+      </div>
+      <div  *ngIf="userInput" class="error-message">
+        {{ 'Le username est requis(exemple ismail.allobaba).'|translate }}
+      </div>
+
+      <div class="input-field">
+        <i class="fas fa-lock"></i>
+        <input type="{{ passwordVisible ? 'text' : 'password' }}" placeholder="{{'Password'|translate}}" formControlName="password"  (input)="inputChangePasword()" required >
+        <i class="fas" [class.fa-eye]="passwordVisible" [class.fa-eye-slash]="!passwordVisible"  (click)="togglePasswordVisibility()"></i>
+      </div>
+
+      <div  *ngIf="passInput" class="error-message">
+        {{ 'Le Mot de passe est invalide.'|translate }}
+      </div>
+      <div class="input-field">
+        <i class="fas fa-lock"></i>
+        <input type="{{ passwordVisible ? 'text' : 'password' }}" placeholder="{{'Confirm Password'|translate}}" formControlName="confirpassword" (input)="inputChangePaswordConfirm()" required>
+        <i class="fas" [class.fa-eye]="passwordVisible" [class.fa-eye-slash]="!passwordVisible"  (click)="togglePasswordVisibility()"></i>
+      </div>
+
+      <div  *ngIf="confirmPassInput" class="error-message">
+        {{ 'Le Mot de passe est pas identique.'|translate }}
+      </div>
+
+      <div *ngIf="passInput" style="color: #c06262">
+
+        {{'Le mot de passe doit contenir au moins une lettre majuscule, minuscule, un chiffre , un symbole et avoir une longueur > de 8 caractères.'|translate}}
+
+      </div>
+
+      <p-toast></p-toast>
+      <input type="submit" value="{{'Sign up'|translate}}" [disabled]="!submit"  class="btn">
+
+
+      <p class="account-text">{{ "You Don't Accont"|translate }} <a href="#" >{{ 'Sign up'|translate }}</a></p>
+
+    </form>
+
+  </div>
+
+  <div class="panels-container">
+
+    <div class="panel left-panel">
+      <div class="content">
+        <h3>{{ 'Connecter'|translate }}</h3>
+        <p class="myPara" >{{ 'You already have an account ?'|translate }}</p>
+        <button class="btn" id="sign-in-btn" (click)="SignIn()">{{ 'Sign in'|translate }}</button>
+      </div>
+
+    </div>
+
+
+    <div class="panel right-panel">
+      <div class="content">
+        <h3>{{ 'Welcome To Safarent'|translate }} </h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque accusantium dolor, eos incidunt minima iure?</p>
+        <button class="btn" id="sign-up-btn"  (click)="Signup()">{{ 'Sign up'|translate }}</button>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+<p-dialog header="Header" [(visible)]="visible" [modal]="true" [style]="{ width: '50rem' }" [maximizable]="true">
+  <ng-template pTemplate="header">
+    <h1 class="font-bold white-space-nowrap">role AgenceLocation</h1>
+  </ng-template>
+  <p *ngIf="userRadio"  class="m-0">
+    ce  compte est public ,utilisateur capable sauf de consulter  et de reserver
+    dans  notre application sans  aucun droit d'accès
+    de publier un appartement ou en voiture.
+  </p>
+  <p *ngIf="propRadio"  class="m-0">
+    ce  compte  est privé et il est payé,utilisateur
+    capable de consulter et de acheter dans notre application avec
+    autre droit d'accès  comme  publier des appartementes et chat avce client.
+  </p>
+  <div *ngIf="agenceRadio"  class="m-0">
+    <p>ce  compte il est privé et il est payé,utilisateur
+      capable de consulter et de acheter dans notre application avec
+      autre droit d'accès  comme  publier des voitures et chat avec client.</p>
+
+  </div>
+  <ng-template pTemplate="footer">
+    <p-button  (click)="visible = false" label="Ok" pAutoFocus [autofocus]="true"></p-button>
+  </ng-template>
+</p-dialog>
+

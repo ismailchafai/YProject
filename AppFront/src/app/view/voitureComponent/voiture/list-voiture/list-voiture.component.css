@@ -1,0 +1,25 @@
+
+table {
+  width: 70%;
+
+}
+.mat-mdc-table tbody, .mat-mdc-table tfoot, .mat-mdc-table thead, .mat-mdc-cell, .mat-mdc-footer-cell, .mat-mdc-header-row, .mat-mdc-row, .mat-mdc-footer-row, .mat-mdc-table .mat-mdc-header-cell {
+  background: white;
+  color: black;
+
+}
+
+.mat-mdc-card {
+  border-radius: var(--mdc-elevated-card-container-shape);
+  dth: 0;
+  /* border-style: solid; */
+  border-color: var(--mdc-elevated-card-container-color);
+  box-shadow: var(--mdc-elevated-card-container-elevation);
+  background-color: white;
+  margin-top: 7rem;
+}
+
+a{
+  cursor: pointer;
+}
+

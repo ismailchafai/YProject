@@ -1,0 +1,85 @@
+<!--<a class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#updateModal"  (click)="replirCin()"-->
+<!--&gt;-->
+<!--  <i class="bi bi-pencil-square"></i>-->
+<!--</a>-->
+
+<!--&lt;!&ndash;<div class="notification" [ngClass]="{ 'show': _ok }"><i class="bi bi-bell-fill"></i>update  with succes&ndash;&gt;-->
+<!--&lt;!&ndash;  <i class="bi bi-bell-fill"></i></div>&ndash;&gt;-->
+
+<!--<div class="modal fade"  id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">-->
+<!--  <div class="modal-dialog">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header">-->
+<!--        <h5 class="modal-title" id="updateModalLabel">Modifier Propriétaire</h5>-->
+<!--        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>-->
+<!--      </div>-->
+<!--      <div class="modal-body">-->
+
+
+<!--        <form (ngSubmit)="onSubmit()">-->
+<!--          <div class="mb-3">-->
+<!--            <label class="form-label">Nom</label>-->
+<!--            <input class="form-control"  [(ngModel)]="editPropNew.nom" [ngModelOptions]="{standalone: true}"   [value]="propAppartementService.editPropExiste.nom" >-->
+<!--          </div>-->
+<!--          <div class="mb-3">-->
+<!--            <label class="form-label">Prénom</label>-->
+<!--            <input class="form-control" [(ngModel)]="editPropNew.prenom"  [ngModelOptions]="{standalone: true}" [value]="propAppartementService.editPropExiste.prenom" >-->
+<!--          </div>-->
+<!--          <div class="mb-3">-->
+<!--            <label class="form-label">Numéro de téléphone</label>-->
+<!--            <input class="form-control" [(ngModel)]="editPropNew.numTele"  [ngModelOptions]="{standalone: true}" [value]="propAppartementService.editPropExiste.numTele">-->
+<!--          </div>-->
+<!--          <div class="mb-3">-->
+<!--            <label class="form-label">Email</label>-->
+<!--            <input class="form-control" type="email"  [(ngModel)]="editPropNew.email" [ngModelOptions]="{standalone: true}" [value]="propAppartementService.editPropExiste.email">-->
+<!--          </div>-->
+<!--          <div class="mb-3">-->
+<!--            <label class="form-label">RIB propriétaire</label>-->
+<!--            <input class="form-control"  [(ngModel)]="editPropNew.ribPropAppt" [ngModelOptions]="{standalone: true}" [value]="propAppartementService.editPropExiste.ribPropAppt">-->
+<!--          </div>-->
+<!--          <div class="mb-3">-->
+<!--            <label class="form-label">Numéro de compte propriétaire</label>-->
+<!--            <input class="form-control" [(ngModel)]="editPropNew.numCompteBkPropApp" [ngModelOptions]="{standalone: true}" [value]="propAppartementService.editPropExiste.numCompteBkPropApp">-->
+<!--          </div>-->
+<!--          <div class="mb-3">-->
+<!--            <label class="form-label">Nom d'utilisateur</label>-->
+<!--            <input class="form-control"  [(ngModel)]="editPropNew.usernamePropAppt" [ngModelOptions]="{standalone: true}" [value]="propAppartementService.editPropExiste.usernamePropAppt">-->
+<!--          </div>-->
+<!--          <button type="submit" class="btn btn-primary" >Soumettre</button>-->
+<!--        </form>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+<!--&lt;!&ndash;<form >&ndash;&gt;-->
+<!--&lt;!&ndash;  <div class="mb-3">&ndash;&gt;-->
+<!--&lt;!&ndash;    <label class="form-label">Nom</label>&ndash;&gt;-->
+<!--&lt;!&ndash;    <input class="form-control"  [(ngModel)]="propRitaire.nom" [ngModelOptions]="{standalone: true}"    [value]="propRitaire.nom">&ndash;&gt;-->
+<!--&lt;!&ndash;  </div>&ndash;&gt;-->
+<!--&lt;!&ndash;  <div class="mb-3">&ndash;&gt;-->
+<!--&lt;!&ndash;    <label class="form-label">Prénom</label>&ndash;&gt;-->
+<!--&lt;!&ndash;    <input class="form-control" [(ngModel)]="propRitaire.prenom"  [ngModelOptions]="{standalone: true}"  [value]="propRitaire.prenom">&ndash;&gt;-->
+<!--&lt;!&ndash;  </div>&ndash;&gt;-->
+<!--&lt;!&ndash;  <div class="mb-3">&ndash;&gt;-->
+<!--&lt;!&ndash;    <label class="form-label">Numéro de téléphone</label>&ndash;&gt;-->
+<!--&lt;!&ndash;    <input class="form-control" [(ngModel)]="propRitaire.numTele"  [ngModelOptions]="{standalone: true}" [value]="propRitaire.numTele">&ndash;&gt;-->
+<!--&lt;!&ndash;  </div>&ndash;&gt;-->
+<!--&lt;!&ndash;  <div class="mb-3">&ndash;&gt;-->
+<!--&lt;!&ndash;    <label class="form-label">Email</label>&ndash;&gt;-->
+<!--&lt;!&ndash;    <input class="form-control" type="email"  [(ngModel)]="propRitaire.email" [ngModelOptions]="{standalone: true}" [value]="propRitaire.email">&ndash;&gt;-->
+<!--&lt;!&ndash;  </div>&ndash;&gt;-->
+<!--&lt;!&ndash;  <div class="mb-3">&ndash;&gt;-->
+<!--&lt;!&ndash;    <label class="form-label">RIB propriétaire</label>&ndash;&gt;-->
+<!--&lt;!&ndash;    <input class="form-control"  [(ngModel)]="propRitaire.ribPropAppt" [ngModelOptions]="{standalone: true}" [value]="propRitaire.ribPropAppt">&ndash;&gt;-->
+<!--&lt;!&ndash;  </div>&ndash;&gt;-->
+<!--&lt;!&ndash;  <div class="mb-3">&ndash;&gt;-->
+<!--&lt;!&ndash;    <label class="form-label">Numéro de compte propriétaire</label>&ndash;&gt;-->
+<!--&lt;!&ndash;    <input class="form-control" [(ngModel)]="propRitaire.numCompteBkPropApp" [ngModelOptions]="{standalone: true}" [value]="propRitaire.numCompteBkPropApp">&ndash;&gt;-->
+<!--&lt;!&ndash;  </div>&ndash;&gt;-->
+<!--&lt;!&ndash;  <div class="mb-3">&ndash;&gt;-->
+<!--&lt;!&ndash;    <label class="form-label">Nom d'utilisateur</label>&ndash;&gt;-->
+<!--&lt;!&ndash;    <input class="form-control"  [(ngModel)]="propRitaire.usernamePropAppt" [ngModelOptions]="{standalone: true}" [value]="propRitaire.usernamePropAppt">&ndash;&gt;-->
+<!--&lt;!&ndash;  </div>&ndash;&gt;-->
+<!--&lt;!&ndash;  <button type="submit" class="btn btn-primary" (click)="onSubmit()" >Soumettre</button>&ndash;&gt;-->
+<!--&lt;!&ndash;</form>&ndash;&gt;-->
